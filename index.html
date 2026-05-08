@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Scott & Michael | Luxury Real Estate</title>
+<title>Scott & Michael | Luxury Real Estate · New Zealand</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -12,421 +12,235 @@
   --cream:#FAF8F4;--warm-white:#F5F2EC;--beige:#EDE8DF;--light-grey:#E8E4DD;
   --mid-grey:#9B9690;--dark-grey:#4A4640;--matte-black:#1A1916;
   --accent-gold:#C4A96B;--accent-gold-light:#D4BF8A;
-  --glass:rgba(250,248,244,0.75);--glass-dark:rgba(26,25,22,0.6);
+  --glass:rgba(250,248,244,0.85);--glass-dark:rgba(26,25,22,0.6);
   --shadow-soft:0 8px 40px rgba(26,25,22,0.08);
-  --shadow-medium:0 16px 60px rgba(26,25,22,0.12);
+  --shadow-medium:0 16px 60px rgba(26,25,22,0.15);
   --font-serif:'Cormorant Garamond',Georgia,serif;
   --font-sans:'Montserrat',sans-serif;
   --nav-h:72px;
 }
 html{scroll-behavior:smooth}
-body{
-  font-family:var(--font-sans);background:var(--cream);color:var(--matte-black);
-  min-height:100vh;overflow-x:hidden;
-}
+body{font-family:var(--font-sans);background:var(--cream);color:var(--matte-black);min-height:100vh;overflow-x:hidden}
 
 /* ─── LOADER ─── */
-#loader{
-  position:fixed;inset:0;z-index:9999;background:var(--matte-black);
-  display:flex;align-items:center;justify-content:center;flex-direction:column;
-  transition:opacity 0.8s ease,visibility 0.8s ease;
-}
-#loader.hidden{opacity:0;visibility:hidden}
+#loader{position:fixed;inset:0;z-index:9999;background:var(--matte-black);display:flex;align-items:center;justify-content:center;flex-direction:column;transition:opacity 0.8s ease,visibility 0.8s ease}
+#loader.hidden{opacity:0;visibility:hidden;pointer-events:none}
 .loader-logo{font-family:var(--font-serif);font-size:2.8rem;color:var(--cream);letter-spacing:0.12em;font-weight:300}
 .loader-sub{font-family:var(--font-sans);font-size:0.65rem;letter-spacing:0.35em;color:var(--accent-gold);text-transform:uppercase;margin-top:0.5rem}
 .loader-bar{width:120px;height:1px;background:rgba(255,255,255,0.15);margin-top:2.5rem;overflow:hidden}
-.loader-fill{height:100%;width:0;background:var(--accent-gold);transition:width 1.4s ease}
+.loader-fill{height:100%;width:0;background:var(--accent-gold);transition:width 1.6s cubic-bezier(0.4,0,0.2,1)}
 
 /* ─── NAV ─── */
-#navbar{
-  position:fixed;top:0;left:0;right:0;z-index:1000;height:var(--nav-h);
-  display:flex;align-items:center;justify-content:space-between;padding:0 4vw;
-  transition:background 0.4s ease,box-shadow 0.4s ease,backdrop-filter 0.4s ease;
-}
-#navbar.scrolled{
-  background:var(--glass);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
-  box-shadow:0 1px 0 rgba(196,169,107,0.2),var(--shadow-soft);
-}
-.nav-logo{
-  font-family:var(--font-serif);font-size:1.5rem;font-weight:300;letter-spacing:0.08em;
-  color:var(--cream);text-decoration:none;transition:color 0.3s;cursor:pointer;
-}
+#navbar{position:fixed;top:0;left:0;right:0;z-index:1000;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 4vw;transition:background 0.4s ease,box-shadow 0.4s ease,backdrop-filter 0.4s ease}
+#navbar.scrolled{background:var(--glass);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);box-shadow:0 1px 0 rgba(196,169,107,0.2),var(--shadow-soft)}
+.nav-logo{font-family:var(--font-serif);font-size:1.5rem;font-weight:300;letter-spacing:0.08em;color:var(--cream);text-decoration:none;transition:color 0.3s;cursor:pointer}
 .nav-logo.dark{color:var(--matte-black)}
-.nav-links{display:flex;gap:2.5rem;list-style:none;align-items:center}
-.nav-links a{
-  font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(250,248,244,0.85);
-  text-decoration:none;font-weight:400;transition:color 0.3s,opacity 0.3s;
-  cursor:pointer;
-}
+.nav-links{display:flex;gap:2rem;list-style:none;align-items:center}
+.nav-links a{font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(250,248,244,0.85);text-decoration:none;font-weight:400;transition:color 0.3s;cursor:pointer}
 .nav-links.dark a{color:var(--dark-grey)}
 .nav-links a:hover,.nav-links.dark a:hover{color:var(--accent-gold)}
-.nav-links a.active{color:var(--accent-gold)}
-.nav-cta{
-  font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;
-  border:1px solid var(--accent-gold);color:var(--accent-gold);padding:0.6rem 1.5rem;
-  background:transparent;cursor:pointer;transition:all 0.3s;font-family:var(--font-sans);font-weight:400;
-}
+.nav-cta{font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;border:1px solid var(--accent-gold);color:var(--accent-gold);padding:0.6rem 1.5rem;background:transparent;cursor:pointer;transition:all 0.3s;font-family:var(--font-sans);font-weight:400}
 .nav-cta:hover{background:var(--accent-gold);color:var(--matte-black)}
 .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
 .hamburger span{display:block;width:24px;height:1px;background:var(--cream);transition:all 0.3s}
 .hamburger.dark span{background:var(--matte-black)}
-#mobile-menu{
-  display:none;position:fixed;inset:0;z-index:999;background:var(--matte-black);
-  flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;
-}
+#mobile-menu{display:none;position:fixed;inset:0;z-index:999;background:var(--matte-black);flex-direction:column;align-items:center;justify-content:center;gap:2rem}
 #mobile-menu.open{display:flex}
-#mobile-menu a{
-  font-family:var(--font-serif);font-size:2rem;color:var(--cream);text-decoration:none;
-  letter-spacing:0.05em;opacity:0;transform:translateY(20px);transition:opacity 0.4s,transform 0.4s,color 0.3s;
-  cursor:pointer;
-}
+#mobile-menu a{font-family:var(--font-serif);font-size:1.8rem;color:var(--cream);text-decoration:none;letter-spacing:0.05em;opacity:0;transform:translateY(20px);transition:opacity 0.4s,transform 0.4s,color 0.3s;cursor:pointer}
 #mobile-menu.open a{opacity:1;transform:translateY(0)}
 #mobile-menu a:hover{color:var(--accent-gold)}
-#mobile-menu .m-close{
-  position:absolute;top:1.5rem;right:4vw;width:36px;height:36px;cursor:pointer;
-  display:flex;align-items:center;justify-content:center;
-}
-#mobile-menu .m-close::before,#mobile-menu .m-close::after{
-  content:'';position:absolute;width:24px;height:1px;background:var(--cream);
-}
+#mobile-menu .m-close{position:absolute;top:1.5rem;right:4vw;width:36px;height:36px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+#mobile-menu .m-close::before,#mobile-menu .m-close::after{content:'';position:absolute;width:24px;height:1px;background:var(--cream)}
 #mobile-menu .m-close::before{transform:rotate(45deg)}
 #mobile-menu .m-close::after{transform:rotate(-45deg)}
 
 /* ─── PAGE SYSTEM ─── */
 .page{display:none;min-height:100vh}
 .page.active{display:block}
-
-/* ─── PAGE TRANSITIONS ─── */
 .fade-in{animation:fadeInPage 0.6s ease forwards}
 @keyframes fadeInPage{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
 
-/* ─── HERO (HOME) ─── */
-.hero{
-  min-height:100vh;position:relative;display:flex;align-items:center;
-  background:var(--matte-black);overflow:hidden;
-}
-.hero-bg{
-  position:absolute;inset:0;
-  background:linear-gradient(135deg,#0f0e0c 0%,#1a1916 40%,#2a2520 70%,#1a1916 100%);
-}
-.hero-pattern{
-  position:absolute;inset:0;opacity:0.04;
-  background-image:repeating-linear-gradient(0deg,transparent,transparent 60px,rgba(196,169,107,0.3) 60px,rgba(196,169,107,0.3) 61px),
-    repeating-linear-gradient(90deg,transparent,transparent 60px,rgba(196,169,107,0.3) 60px,rgba(196,169,107,0.3) 61px);
-}
-.hero-orb{
-  position:absolute;border-radius:50%;filter:blur(80px);
-  animation:orbFloat 8s ease-in-out infinite alternate;
-}
-.hero-orb-1{width:500px;height:500px;background:radial-gradient(circle,rgba(196,169,107,0.12) 0%,transparent 70%);top:-100px;right:-100px}
+/* ─── HERO ─── */
+.hero{min-height:100vh;position:relative;display:flex;align-items:center;background:var(--matte-black);overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,#0f0e0c 0%,#1a1916 40%,#2a2520 70%,#1a1916 100%)}
+.hero-img{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1613977257363-707ba9348227?w=1800&q=80&auto=format&fit=crop');background-size:cover;background-position:center;opacity:0.22}
+.hero-pattern{position:absolute;inset:0;opacity:0.03;background-image:repeating-linear-gradient(0deg,transparent,transparent 60px,rgba(196,169,107,0.4) 60px,rgba(196,169,107,0.4) 61px),repeating-linear-gradient(90deg,transparent,transparent 60px,rgba(196,169,107,0.4) 60px,rgba(196,169,107,0.4) 61px)}
+.hero-orb{position:absolute;border-radius:50%;filter:blur(80px);animation:orbFloat 8s ease-in-out infinite alternate}
+.hero-orb-1{width:500px;height:500px;background:radial-gradient(circle,rgba(196,169,107,0.14) 0%,transparent 70%);top:-100px;right:-100px}
 .hero-orb-2{width:400px;height:400px;background:radial-gradient(circle,rgba(196,169,107,0.07) 0%,transparent 70%);bottom:-50px;left:-50px;animation-delay:-4s}
 @keyframes orbFloat{0%{transform:translate(0,0) scale(1)}100%{transform:translate(30px,20px) scale(1.05)}}
-.hero-content{
-  position:relative;z-index:2;padding:0 4vw;max-width:1200px;margin:0 auto;width:100%;
-  padding-top:var(--nav-h);
-}
-.hero-eyebrow{
-  font-size:0.6rem;letter-spacing:0.4em;text-transform:uppercase;color:var(--accent-gold);
-  margin-bottom:2rem;display:flex;align-items:center;gap:1rem;opacity:0;animation:fadeUp 1s 0.8s ease forwards;
-}
+.hero-content{position:relative;z-index:2;padding:0 4vw;max-width:1200px;margin:0 auto;width:100%;padding-top:var(--nav-h)}
+.hero-eyebrow{font-size:0.6rem;letter-spacing:0.4em;text-transform:uppercase;color:var(--accent-gold);margin-bottom:2rem;display:flex;align-items:center;gap:1rem;opacity:0;animation:fadeUp 1s 0.8s ease forwards}
 .hero-eyebrow::before{content:'';width:40px;height:1px;background:var(--accent-gold);display:block}
-.hero-title{
-  font-family:var(--font-serif);font-size:clamp(3.5rem,8vw,8rem);font-weight:300;
-  color:var(--cream);line-height:0.95;letter-spacing:-0.01em;
-  opacity:0;animation:fadeUp 1s 1s ease forwards;
-}
+.hero-title{font-family:var(--font-serif);font-size:clamp(3.5rem,8vw,8rem);font-weight:300;color:var(--cream);line-height:0.95;letter-spacing:-0.01em;opacity:0;animation:fadeUp 1s 1s ease forwards}
 .hero-title em{font-style:italic;color:var(--accent-gold)}
-.hero-desc{
-  font-size:0.75rem;letter-spacing:0.12em;color:rgba(250,248,244,0.55);
-  max-width:380px;line-height:2.2;margin-top:2.5rem;
-  opacity:0;animation:fadeUp 1s 1.2s ease forwards;
-}
-.hero-actions{
-  display:flex;gap:1.5rem;margin-top:3rem;flex-wrap:wrap;
-  opacity:0;animation:fadeUp 1s 1.4s ease forwards;
-}
-.btn-primary{
-  display:inline-flex;align-items:center;gap:0.75rem;
-  background:var(--accent-gold);color:var(--matte-black);
-  font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;font-weight:600;
-  padding:1.1rem 2.5rem;border:none;cursor:pointer;transition:all 0.3s;font-family:var(--font-sans);
-  text-decoration:none;
-}
-.btn-primary:hover{background:var(--accent-gold-light);transform:translateY(-1px);box-shadow:0 8px 24px rgba(196,169,107,0.3)}
-.btn-ghost{
-  display:inline-flex;align-items:center;gap:0.75rem;
-  background:transparent;color:var(--cream);
-  font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;font-weight:400;
-  padding:1.1rem 2.5rem;border:1px solid rgba(250,248,244,0.25);cursor:pointer;
-  transition:all 0.3s;font-family:var(--font-sans);text-decoration:none;
-}
+.hero-desc{font-size:0.75rem;letter-spacing:0.1em;color:rgba(250,248,244,0.55);max-width:380px;line-height:2.2;margin-top:2.5rem;opacity:0;animation:fadeUp 1s 1.2s ease forwards}
+.hero-actions{display:flex;gap:1.5rem;margin-top:3rem;flex-wrap:wrap;opacity:0;animation:fadeUp 1s 1.4s ease forwards}
+.btn-primary{display:inline-flex;align-items:center;gap:0.75rem;background:var(--accent-gold);color:var(--matte-black);font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;font-weight:600;padding:1.1rem 2.5rem;border:none;cursor:pointer;transition:all 0.3s;font-family:var(--font-sans);text-decoration:none}
+.btn-primary:hover{background:var(--accent-gold-light);transform:translateY(-1px);box-shadow:0 8px 24px rgba(196,169,107,0.35)}
+.btn-ghost{display:inline-flex;align-items:center;gap:0.75rem;background:transparent;color:var(--cream);font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;font-weight:400;padding:1.1rem 2.5rem;border:1px solid rgba(250,248,244,0.25);cursor:pointer;transition:all 0.3s;font-family:var(--font-sans);text-decoration:none}
 .btn-ghost:hover{border-color:var(--accent-gold);color:var(--accent-gold)}
-.hero-scroll{
-  position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);
-  display:flex;flex-direction:column;align-items:center;gap:0.5rem;
-  opacity:0;animation:fadeUp 1s 1.8s ease forwards;
-}
+.hero-scroll{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:0.5rem;opacity:0;animation:fadeUp 1s 1.8s ease forwards}
 .hero-scroll span{font-size:0.55rem;letter-spacing:0.3em;text-transform:uppercase;color:rgba(250,248,244,0.4)}
 .scroll-line{width:1px;height:50px;background:linear-gradient(to bottom,rgba(196,169,107,0.6),transparent);animation:scrollPulse 2s ease-in-out infinite}
 @keyframes scrollPulse{0%,100%{transform:scaleY(0.5);opacity:0.5}50%{transform:scaleY(1);opacity:1}}
 @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
 
 /* ─── MARQUEE ─── */
-.marquee-section{
-  background:var(--matte-black);border-top:1px solid rgba(196,169,107,0.2);
-  border-bottom:1px solid rgba(196,169,107,0.2);padding:1.2rem 0;overflow:hidden;
-}
+.marquee-section{background:var(--matte-black);border-top:1px solid rgba(196,169,107,0.2);border-bottom:1px solid rgba(196,169,107,0.2);padding:1.2rem 0;overflow:hidden}
 .marquee-track{display:flex;gap:4rem;animation:marqueeMove 30s linear infinite;width:max-content}
-.marquee-item{
-  font-family:var(--font-serif);font-size:1.1rem;font-weight:300;color:rgba(250,248,244,0.5);
-  letter-spacing:0.05em;white-space:nowrap;display:flex;align-items:center;gap:4rem;
-}
-.marquee-dot{width:4px;height:4px;border-radius:50%;background:var(--accent-gold)}
+.marquee-item{font-family:var(--font-serif);font-size:1.1rem;font-weight:300;color:rgba(250,248,244,0.5);letter-spacing:0.05em;white-space:nowrap;display:flex;align-items:center;gap:4rem}
+.marquee-dot{width:4px;height:4px;border-radius:50%;background:var(--accent-gold);flex-shrink:0}
 @keyframes marqueeMove{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
-/* ─── STATS SECTION ─── */
-.stats-section{
-  background:var(--warm-white);padding:6rem 4vw;
-}
+/* ─── STATS ─── */
+.stats-section{background:var(--warm-white);padding:6rem 4vw}
 .stats-inner{max-width:1200px;margin:0 auto}
 .stats-label{font-size:0.6rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--accent-gold);margin-bottom:3rem}
 .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
-.stat-item{
-  padding:3rem 2.5rem;border-right:1px solid var(--light-grey);
-  opacity:0;transform:translateY(20px);transition:opacity 0.7s ease,transform 0.7s ease;
-}
+.stat-item{padding:3rem 2.5rem;border-right:1px solid var(--light-grey);opacity:0;transform:translateY(20px);transition:opacity 0.7s ease,transform 0.7s ease}
 .stat-item:last-child{border-right:none}
 .stat-item.visible{opacity:1;transform:none}
 .stat-num{font-family:var(--font-serif);font-size:clamp(3rem,5vw,5rem);font-weight:300;color:var(--matte-black);line-height:1}
 .stat-num em{font-style:normal;color:var(--accent-gold)}
 .stat-label{font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid-grey);margin-top:0.75rem}
 
-/* ─── FEATURED PROPERTIES ─── */
+/* ─── PROPERTY CARDS ─── */
 .props-section{padding:8rem 4vw;background:var(--cream)}
 .section-header{max-width:1200px;margin:0 auto 4rem;display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:2rem}
 .section-eyebrow{font-size:0.6rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--accent-gold);margin-bottom:1rem}
 .section-title{font-family:var(--font-serif);font-size:clamp(2.5rem,5vw,4.5rem);font-weight:300;line-height:1.05}
 .section-title em{font-style:italic;color:var(--accent-gold)}
-.view-all-link{
-  font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--mid-grey);
-  text-decoration:none;display:flex;align-items:center;gap:0.75rem;transition:color 0.3s;cursor:pointer;
-  background:none;border:none;font-family:var(--font-sans);
-}
+.view-all-link{font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--mid-grey);text-decoration:none;display:flex;align-items:center;gap:0.75rem;transition:color 0.3s;cursor:pointer;background:none;border:none;font-family:var(--font-sans)}
 .view-all-link::after{content:'→';font-size:1rem;transition:transform 0.3s}
 .view-all-link:hover{color:var(--accent-gold)}
 .view-all-link:hover::after{transform:translateX(4px)}
 .props-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
-.prop-card{
-  background:var(--warm-white);overflow:hidden;cursor:pointer;
-  transition:transform 0.4s ease,box-shadow 0.4s ease;
-  opacity:0;transform:translateY(24px);
-}
+
+/* ─── PROPERTY CARD CORE ─── */
+.prop-card{background:var(--warm-white);overflow:hidden;cursor:pointer;transition:transform 0.4s ease,box-shadow 0.4s ease;opacity:0;transform:translateY(24px)}
 .prop-card.visible{opacity:1;transform:none}
 .prop-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-medium)}
-.prop-img{
-  height:280px;background:var(--light-grey);overflow:hidden;position:relative;
-}
-.prop-img-inner{
-  width:100%;height:100%;object-fit:cover;transition:transform 0.6s ease;
-  background:linear-gradient(135deg,var(--beige) 0%,var(--light-grey) 100%);
-  display:flex;align-items:center;justify-content:center;
-}
-.prop-card:hover .prop-img-inner{transform:scale(1.04)}
-.prop-img-placeholder{
-  font-family:var(--font-serif);font-size:3rem;color:rgba(155,150,144,0.3);font-weight:300;
-}
-.prop-badge{
-  position:absolute;top:1.25rem;left:1.25rem;
-  background:var(--matte-black);color:var(--cream);
-  font-size:0.55rem;letter-spacing:0.25em;text-transform:uppercase;padding:0.4rem 0.9rem;
-}
+.prop-img{height:240px;overflow:hidden;position:relative}
+.prop-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s ease;display:block}
+.prop-card:hover .prop-img img{transform:scale(1.06)}
+.prop-img-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 50%,rgba(26,25,22,0.35) 100%)}
+.prop-badge{position:absolute;top:1.25rem;left:1.25rem;background:var(--matte-black);color:var(--cream);font-size:0.55rem;letter-spacing:0.25em;text-transform:uppercase;padding:0.4rem 0.9rem;z-index:2}
 .prop-badge.sold{background:var(--accent-gold);color:var(--matte-black)}
-.prop-body{padding:1.75rem 2rem}
+.prop-body{padding:1.75rem 1.75rem 1.75rem}
 .prop-price{font-family:var(--font-serif);font-size:1.6rem;font-weight:300;color:var(--matte-black)}
-.prop-address{font-size:0.65rem;letter-spacing:0.1em;color:var(--mid-grey);margin-top:0.4rem;text-transform:uppercase}
-.prop-details{display:flex;gap:1.5rem;margin-top:1rem;padding-top:1rem;border-top:1px solid var(--light-grey)}
+.prop-address{font-size:0.62rem;letter-spacing:0.08em;color:var(--mid-grey);margin-top:0.4rem;text-transform:uppercase;line-height:1.5}
+.prop-details{display:flex;gap:1.25rem;margin-top:1rem;padding-top:1rem;border-top:1px solid var(--light-grey);flex-wrap:wrap}
 .prop-detail{font-size:0.6rem;letter-spacing:0.1em;color:var(--dark-grey);display:flex;align-items:center;gap:0.4rem}
 
 /* ─── TESTIMONIALS ─── */
 .testi-section{background:var(--matte-black);padding:8rem 4vw;overflow:hidden;position:relative}
-.testi-section::before{
-  content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse at 80% 50%,rgba(196,169,107,0.06) 0%,transparent 60%);
-}
+.testi-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 50%,rgba(196,169,107,0.06) 0%,transparent 60%)}
 .testi-inner{max-width:1200px;margin:0 auto;position:relative;z-index:1}
 .testi-eyebrow{font-size:0.6rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--accent-gold);margin-bottom:1.5rem}
 .testi-heading{font-family:var(--font-serif);font-size:clamp(2rem,4vw,3.5rem);font-weight:300;color:var(--cream);margin-bottom:4rem;max-width:500px}
 .testi-carousel{position:relative}
 .testi-track{display:flex;gap:2rem;transition:transform 0.5s cubic-bezier(0.4,0,0.2,1)}
-.testi-card{
-  min-width:calc(50% - 1rem);background:rgba(255,255,255,0.04);
-  border:1px solid rgba(196,169,107,0.15);padding:2.5rem;flex-shrink:0;
-  backdrop-filter:blur(10px);
-}
+.testi-card{min-width:calc(50% - 1rem);background:rgba(255,255,255,0.04);border:1px solid rgba(196,169,107,0.15);padding:2.5rem;flex-shrink:0;backdrop-filter:blur(10px)}
 .testi-stars{color:var(--accent-gold);font-size:0.75rem;letter-spacing:0.2em;margin-bottom:1.5rem}
-.testi-text{
-  font-family:var(--font-serif);font-size:1.15rem;font-weight:300;
-  color:rgba(250,248,244,0.8);line-height:1.8;font-style:italic;margin-bottom:2rem;
-}
+.testi-text{font-family:var(--font-serif);font-size:1.1rem;font-weight:300;color:rgba(250,248,244,0.8);line-height:1.9;font-style:italic;margin-bottom:2rem}
 .testi-author{font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--mid-grey)}
 .testi-source{font-size:0.55rem;color:rgba(155,150,144,0.6);margin-top:0.25rem;letter-spacing:0.15em}
 .testi-controls{display:flex;gap:0.75rem;margin-top:2.5rem}
-.testi-btn{
-  width:44px;height:44px;border:1px solid rgba(196,169,107,0.3);background:transparent;
-  cursor:pointer;color:var(--accent-gold);font-size:1rem;transition:all 0.3s;
-  display:flex;align-items:center;justify-content:center;
-}
+.testi-btn{width:44px;height:44px;border:1px solid rgba(196,169,107,0.3);background:transparent;cursor:pointer;color:var(--accent-gold);font-size:1rem;transition:all 0.3s;display:flex;align-items:center;justify-content:center}
 .testi-btn:hover{background:var(--accent-gold);color:var(--matte-black);border-color:var(--accent-gold)}
 
 /* ─── SERVICES ─── */
 .services-section{padding:8rem 4vw;background:var(--warm-white)}
 .services-inner{max-width:1200px;margin:0 auto}
 .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:4rem}
-.service-card{
-  padding:3rem 2.5rem;background:var(--cream);border-bottom:2px solid transparent;
-  transition:border-color 0.3s,transform 0.3s,box-shadow 0.3s;
-  opacity:0;transform:translateY(20px);
-}
+.service-card{padding:3rem 2.5rem;background:var(--cream);border-bottom:2px solid transparent;transition:border-color 0.3s,transform 0.3s,box-shadow 0.3s;opacity:0;transform:translateY(20px)}
 .service-card.visible{opacity:1;transform:none}
 .service-card:hover{border-color:var(--accent-gold);transform:translateY(-4px);box-shadow:var(--shadow-soft)}
-.service-num{
-  font-family:var(--font-serif);font-size:4rem;font-weight:300;
-  color:rgba(196,169,107,0.2);line-height:1;margin-bottom:1.5rem;
-}
-.service-title{font-family:var(--font-serif);font-size:1.5rem;font-weight:300;margin-bottom:1rem;color:var(--matte-black)}
-.service-desc{font-size:0.7rem;line-height:2;color:var(--mid-grey);letter-spacing:0.05em}
+.service-num{font-family:var(--font-serif);font-size:4rem;font-weight:300;color:rgba(196,169,107,0.2);line-height:1;margin-bottom:1.5rem}
+.service-title{font-family:var(--font-serif);font-size:1.45rem;font-weight:300;margin-bottom:1rem;color:var(--matte-black)}
+.service-desc{font-size:0.7rem;line-height:2;color:var(--mid-grey);letter-spacing:0.04em}
 
-/* ─── ABOUT SECTION ─── */
+/* ─── ABOUT TEASER ─── */
 .about-section{padding:8rem 4vw;background:var(--cream)}
 .about-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:8rem;align-items:center}
-.about-img-wrap{
-  aspect-ratio:3/4;background:var(--beige);position:relative;overflow:hidden;
-}
-.about-img-wrap::before{
-  content:'';position:absolute;top:-20px;left:-20px;right:20px;bottom:20px;
-  border:1px solid var(--accent-gold);opacity:0.3;z-index:0;
-}
-.about-img-inner{
-  position:absolute;inset:0;background:linear-gradient(135deg,var(--beige) 0%,var(--light-grey) 100%);
-  display:flex;align-items:center;justify-content:center;
-}
-.about-img-placeholder{font-family:var(--font-serif);font-size:5rem;color:rgba(155,150,144,0.25);font-weight:300}
+.about-img-wrap{aspect-ratio:3/4;position:relative;overflow:hidden}
+.about-img-wrap::before{content:'';position:absolute;top:-16px;left:-16px;right:16px;bottom:16px;border:1px solid var(--accent-gold);opacity:0.3;z-index:0;pointer-events:none}
+.about-img-wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}
 .about-content{}
 .about-eyebrow{font-size:0.6rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--accent-gold);margin-bottom:1.5rem}
 .about-title{font-family:var(--font-serif);font-size:clamp(2rem,4vw,3.5rem);font-weight:300;line-height:1.1;margin-bottom:2rem}
 .about-title em{font-style:italic;color:var(--accent-gold)}
-.about-text{font-size:0.72rem;line-height:2.2;color:var(--mid-grey);letter-spacing:0.05em;margin-bottom:1.5rem}
+.about-text{font-size:0.72rem;line-height:2.2;color:var(--mid-grey);letter-spacing:0.04em;margin-bottom:1.5rem}
 .about-qualities{display:flex;flex-direction:column;gap:1rem;margin-top:2rem}
 .quality-item{display:flex;align-items:center;gap:1rem;font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--dark-grey)}
-.quality-line{width:30px;height:1px;background:var(--accent-gold)}
+.quality-line{width:30px;height:1px;background:var(--accent-gold);flex-shrink:0}
 
 /* ─── AWARDS ─── */
 .awards-section{padding:6rem 4vw;background:var(--matte-black)}
 .awards-inner{max-width:1200px;margin:0 auto}
 .awards-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(196,169,107,0.12);margin-top:4rem}
-.award-item{
-  background:var(--matte-black);padding:2.5rem 2rem;text-align:center;
-  transition:background 0.3s;
-  opacity:0;transform:translateY(16px);
-}
+.award-item{background:var(--matte-black);padding:2.5rem 2rem;text-align:center;transition:background 0.3s;opacity:0;transform:translateY(16px)}
 .award-item.visible{opacity:1;transform:none}
 .award-item:hover{background:rgba(196,169,107,0.06)}
 .award-icon{font-size:1.75rem;margin-bottom:1rem;color:var(--accent-gold)}
 .award-title{font-family:var(--font-serif);font-size:1rem;font-weight:300;color:var(--cream);margin-bottom:0.5rem}
 .award-year{font-size:0.55rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--mid-grey)}
 
-/* ─── MARKET INSIGHTS ─── */
+/* ─── INSIGHTS ─── */
 .insights-section{padding:8rem 4vw;background:var(--warm-white)}
 .insights-inner{max-width:1200px;margin:0 auto}
-.insights-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem;margin-top:4rem}
-.insight-card{
-  background:var(--cream);padding:2.5rem;cursor:pointer;
-  transition:transform 0.3s,box-shadow 0.3s;position:relative;overflow:hidden;
-}
-.insight-card::after{
-  content:'';position:absolute;bottom:0;left:0;right:100%;height:2px;
-  background:var(--accent-gold);transition:right 0.4s ease;
-}
+.insights-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem}
+.insight-card{background:var(--cream);padding:2.5rem;cursor:pointer;transition:transform 0.3s,box-shadow 0.3s;position:relative;overflow:hidden}
+.insight-card::after{content:'';position:absolute;bottom:0;left:0;right:100%;height:2px;background:var(--accent-gold);transition:right 0.4s ease}
 .insight-card:hover::after{right:0}
 .insight-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-soft)}
 .insight-tag{font-size:0.55rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--accent-gold);margin-bottom:1rem}
-.insight-title{font-family:var(--font-serif);font-size:1.5rem;font-weight:300;margin-bottom:1rem;color:var(--matte-black)}
-.insight-excerpt{font-size:0.68rem;line-height:2;color:var(--mid-grey);letter-spacing:0.04em}
+.insight-title{font-family:var(--font-serif);font-size:1.45rem;font-weight:300;margin-bottom:1rem;color:var(--matte-black)}
+.insight-excerpt{font-size:0.68rem;line-height:2;color:var(--mid-grey);letter-spacing:0.03em}
 .insight-date{font-size:0.55rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(155,150,144,0.6);margin-top:1.5rem}
 
-/* ─── CONTACT SECTION ─── */
+/* ─── CONTACT ─── */
 .contact-section{padding:8rem 4vw;background:var(--cream)}
 .contact-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:8rem}
 .contact-info-eyebrow{font-size:0.6rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--accent-gold);margin-bottom:1.5rem}
 .contact-info-title{font-family:var(--font-serif);font-size:clamp(2rem,4vw,3.5rem);font-weight:300;line-height:1.1;margin-bottom:2rem}
 .contact-details{margin-top:3rem;display:flex;flex-direction:column;gap:2rem}
-.contact-detail-item{}
 .contact-detail-label{font-size:0.55rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--mid-grey);margin-bottom:0.4rem}
 .contact-detail-value{font-family:var(--font-serif);font-size:1.2rem;font-weight:300;color:var(--matte-black)}
-.contact-form{}
 .form-group{margin-bottom:1.75rem}
 .form-label{font-size:0.55rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--mid-grey);display:block;margin-bottom:0.75rem}
-.form-input,.form-select,.form-textarea{
-  width:100%;border:none;border-bottom:1px solid var(--light-grey);background:transparent;
-  padding:0.75rem 0;font-size:0.8rem;color:var(--matte-black);
-  font-family:var(--font-sans);outline:none;transition:border-color 0.3s;letter-spacing:0.05em;
-}
+.form-input,.form-select,.form-textarea{width:100%;border:none;border-bottom:1px solid var(--light-grey);background:transparent;padding:0.75rem 0;font-size:0.8rem;color:var(--matte-black);font-family:var(--font-sans);outline:none;transition:border-color 0.3s;letter-spacing:0.05em}
 .form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--accent-gold)}
 .form-textarea{resize:none;height:100px}
 .form-select{cursor:pointer}
-.form-submit{
-  background:var(--matte-black);color:var(--cream);
-  font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;font-weight:400;
-  padding:1.2rem 3rem;border:none;cursor:pointer;transition:all 0.3s;font-family:var(--font-sans);
-  margin-top:0.5rem;
-}
+.form-submit{background:var(--matte-black);color:var(--cream);font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;font-weight:400;padding:1.2rem 3rem;border:none;cursor:pointer;transition:all 0.3s;font-family:var(--font-sans);margin-top:0.5rem}
 .form-submit:hover{background:var(--accent-gold);color:var(--matte-black)}
 
 /* ─── FOOTER ─── */
 footer{background:var(--matte-black);padding:5rem 4vw 3rem;border-top:1px solid rgba(196,169,107,0.15)}
 .footer-inner{max-width:1200px;margin:0 auto}
 .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:4rem;margin-bottom:4rem}
-.footer-brand{}
 .footer-logo{font-family:var(--font-serif);font-size:2rem;font-weight:300;color:var(--cream);letter-spacing:0.08em;margin-bottom:1rem;display:block}
-.footer-tagline{font-size:0.65rem;line-height:2;color:rgba(155,150,144,0.7);letter-spacing:0.08em;max-width:280px}
+.footer-tagline{font-size:0.65rem;line-height:2;color:rgba(155,150,144,0.7);letter-spacing:0.06em;max-width:280px}
 .footer-col-title{font-size:0.55rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--accent-gold);margin-bottom:1.5rem}
 .footer-links{list-style:none;display:flex;flex-direction:column;gap:0.75rem}
-.footer-links a,.footer-links button{
-  font-size:0.68rem;color:rgba(155,150,144,0.6);text-decoration:none;letter-spacing:0.08em;
-  transition:color 0.3s;cursor:pointer;background:none;border:none;font-family:var(--font-sans);
-  text-align:left;padding:0;
-}
+.footer-links a,.footer-links button{font-size:0.68rem;color:rgba(155,150,144,0.6);text-decoration:none;letter-spacing:0.08em;transition:color 0.3s;cursor:pointer;background:none;border:none;font-family:var(--font-sans);text-align:left;padding:0}
 .footer-links a:hover,.footer-links button:hover{color:var(--accent-gold)}
-.footer-bottom{
-  padding-top:2rem;border-top:1px solid rgba(196,169,107,0.1);
-  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;
-}
+.footer-bottom{padding-top:2rem;border-top:1px solid rgba(196,169,107,0.1);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
 .footer-copy{font-size:0.58rem;color:rgba(155,150,144,0.4);letter-spacing:0.12em}
 .footer-legal{display:flex;gap:2rem}
 .footer-legal a{font-size:0.58rem;color:rgba(155,150,144,0.4);text-decoration:none;letter-spacing:0.1em;cursor:pointer;transition:color 0.3s}
 .footer-legal a:hover{color:var(--accent-gold)}
 .social-links{display:flex;gap:1.25rem}
-.social-link{
-  width:36px;height:36px;border:1px solid rgba(196,169,107,0.2);
-  display:flex;align-items:center;justify-content:center;cursor:pointer;
-  transition:all 0.3s;text-decoration:none;font-size:0.7rem;color:rgba(155,150,144,0.6);
-}
+.social-link{width:36px;height:36px;border:1px solid rgba(196,169,107,0.2);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.3s;text-decoration:none;font-size:0.65rem;color:rgba(155,150,144,0.6);font-family:var(--font-sans)}
 .social-link:hover{border-color:var(--accent-gold);color:var(--accent-gold)}
 
-/* ─── FULL PAGE HERO HEADER (for inner pages) ─── */
-.page-hero{
-  min-height:50vh;background:var(--matte-black);display:flex;align-items:flex-end;
-  padding:6rem 4vw 4rem;position:relative;overflow:hidden;
-}
-.page-hero-bg{
-  position:absolute;inset:0;
-  background:linear-gradient(135deg,#0f0e0c 0%,#1a1916 60%,#2a2520 100%);
-}
-.page-hero-orb{
-  position:absolute;width:400px;height:400px;border-radius:50%;
-  background:radial-gradient(circle,rgba(196,169,107,0.08) 0%,transparent 70%);
-  filter:blur(60px);right:-80px;top:-80px;
-}
+/* ─── PAGE HERO (inner pages) ─── */
+.page-hero{min-height:50vh;background:var(--matte-black);display:flex;align-items:flex-end;padding:6rem 4vw 4rem;position:relative;overflow:hidden}
+.page-hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,#0f0e0c 0%,#1a1916 60%,#2a2520 100%)}
+.page-hero-bg-img{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0.18}
+.page-hero-orb{position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(196,169,107,0.1) 0%,transparent 70%);filter:blur(60px);right:-80px;top:-80px}
 .page-hero-content{position:relative;z-index:1;max-width:1200px;width:100%;margin:0 auto}
 .page-hero-eyebrow{font-size:0.6rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--accent-gold);margin-bottom:1rem}
 .page-hero-title{font-family:var(--font-serif);font-size:clamp(2.5rem,6vw,6rem);font-weight:300;color:var(--cream);line-height:0.95}
@@ -440,22 +254,13 @@ footer{background:var(--matte-black);padding:5rem 4vw 3rem;border-top:1px solid 
 .about-page-text p{margin-bottom:1.5rem}
 .about-page-text strong{color:var(--matte-black);font-weight:500}
 .about-img-block{position:relative;padding-top:3rem;padding-left:3rem}
-.about-img-frame{
-  aspect-ratio:4/5;background:linear-gradient(135deg,var(--beige) 0%,var(--light-grey) 100%);
-  display:flex;align-items:center;justify-content:center;
-}
-.about-img-frame-accent{
-  position:absolute;top:0;left:0;width:70%;height:70%;
-  border:1px solid rgba(196,169,107,0.3);z-index:-1;
-}
+.about-img-frame{aspect-ratio:4/5;overflow:hidden;position:relative}
+.about-img-frame img{width:100%;height:100%;object-fit:cover;display:block}
+.about-img-frame-accent{position:absolute;top:0;left:0;width:70%;height:70%;border:1px solid rgba(196,169,107,0.3);z-index:-1}
 .agent-team{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:6rem}
 .agent-card{background:var(--warm-white);padding:2.5rem;text-align:center}
-.agent-avatar{
-  width:120px;height:120px;border-radius:50%;background:linear-gradient(135deg,var(--beige) 0%,var(--light-grey) 100%);
-  margin:0 auto 1.5rem;display:flex;align-items:center;justify-content:center;
-  font-family:var(--font-serif);font-size:2.5rem;color:rgba(155,150,144,0.4);font-weight:300;
-  border:2px solid rgba(196,169,107,0.2);
-}
+.agent-avatar{width:120px;height:120px;border-radius:50%;margin:0 auto 1.5rem;overflow:hidden;border:2px solid rgba(196,169,107,0.2)}
+.agent-avatar img{width:100%;height:100%;object-fit:cover;display:block}
 .agent-name{font-family:var(--font-serif);font-size:1.75rem;font-weight:300;margin-bottom:0.5rem}
 .agent-role{font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--accent-gold);margin-bottom:1rem}
 .agent-desc{font-size:0.68rem;line-height:2;color:var(--mid-grey)}
@@ -466,58 +271,15 @@ footer{background:var(--matte-black);padding:5rem 4vw 3rem;border-top:1px solid 
 /* ─── PROPERTIES PAGE ─── */
 .props-page{padding:4rem 4vw;background:var(--cream)}
 .props-page-inner{max-width:1200px;margin:0 auto}
-.filter-bar{
-  display:flex;gap:0;margin-bottom:3rem;border:1px solid var(--light-grey);
-  overflow:hidden;width:fit-content;
-}
-.filter-btn{
-  padding:0.75rem 1.75rem;background:transparent;border:none;cursor:pointer;
-  font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid-grey);
-  font-family:var(--font-sans);transition:all 0.3s;
-}
+.filter-bar{display:flex;gap:0;margin-bottom:3rem;border:1px solid var(--light-grey);overflow:hidden;width:fit-content}
+.filter-btn{padding:0.75rem 1.75rem;background:transparent;border:none;cursor:pointer;font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid-grey);font-family:var(--font-sans);transition:all 0.3s}
 .filter-btn.active,.filter-btn:hover{background:var(--matte-black);color:var(--cream)}
 .props-full-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
 
-/* ─── TESTIMONIALS PAGE ─── */
-.testi-page{padding:4rem 4vw;background:var(--cream)}
-.testi-page-inner{max-width:1200px;margin:0 auto}
-.testi-full-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem}
-.testi-full-card{
-  background:var(--warm-white);padding:2.5rem;
-  border-left:2px solid transparent;transition:border-color 0.3s;
-}
-.testi-full-card:hover{border-color:var(--accent-gold)}
-.testi-full-stars{color:var(--accent-gold);font-size:0.8rem;letter-spacing:0.2em;margin-bottom:1.25rem}
-.testi-full-text{
-  font-family:var(--font-serif);font-size:1.05rem;font-weight:300;
-  color:var(--dark-grey);line-height:1.9;font-style:italic;margin-bottom:1.5rem;
-}
-.testi-full-author{font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--matte-black);font-weight:500}
-.testi-full-source{font-size:0.55rem;color:var(--mid-grey);letter-spacing:0.12em;margin-top:0.25rem}
-
-/* ─── AWARDS PAGE ─── */
-.awards-page{padding:4rem 4vw;background:var(--cream)}
-.awards-page-inner{max-width:1200px;margin:0 auto}
-.awards-full-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:2rem}
-.award-full-card{
-  background:var(--warm-white);padding:3rem 2rem;text-align:center;
-  border-bottom:2px solid transparent;transition:all 0.3s;
-}
-.award-full-card:hover{border-color:var(--accent-gold);transform:translateY(-4px);box-shadow:var(--shadow-soft)}
-.award-full-icon{font-size:2.5rem;margin-bottom:1.5rem}
-.award-full-title{font-family:var(--font-serif);font-size:1.25rem;font-weight:300;margin-bottom:0.75rem;color:var(--matte-black)}
-.award-full-year{font-size:0.6rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--accent-gold);margin-bottom:1rem}
-.award-full-desc{font-size:0.65rem;line-height:1.9;color:var(--mid-grey)}
-
-/* ─── SOLD PROPERTIES ─── */
+/* ─── SOLD PAGE ─── */
 .sold-section{padding:4rem 4vw;background:var(--cream)}
 .sold-inner{max-width:1200px;margin:0 auto}
 .sold-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
-
-/* ─── INSIGHTS PAGE ─── */
-.insights-page{padding:4rem 4vw;background:var(--cream)}
-.insights-page-inner{max-width:1200px;margin:0 auto}
-.insights-big-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem}
 
 /* ─── SERVICES PAGE ─── */
 .services-page{padding:4rem 4vw;background:var(--cream)}
@@ -532,28 +294,50 @@ footer{background:var(--matte-black);padding:5rem 4vw 3rem;border-top:1px solid 
 .service-big-list li{font-size:0.63rem;color:var(--dark-grey);letter-spacing:0.08em;display:flex;align-items:center;gap:0.75rem}
 .service-big-list li::before{content:'';width:20px;height:1px;background:var(--accent-gold);flex-shrink:0}
 
+/* ─── TESTIMONIALS PAGE ─── */
+.testi-page{padding:4rem 4vw;background:var(--cream)}
+.testi-page-inner{max-width:1200px;margin:0 auto}
+.testi-full-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem}
+.testi-full-card{background:var(--warm-white);padding:2.5rem;border-left:2px solid transparent;transition:border-color 0.3s}
+.testi-full-card:hover{border-color:var(--accent-gold)}
+.testi-full-stars{color:var(--accent-gold);font-size:0.8rem;letter-spacing:0.2em;margin-bottom:1.25rem}
+.testi-full-text{font-family:var(--font-serif);font-size:1.05rem;font-weight:300;color:var(--dark-grey);line-height:1.9;font-style:italic;margin-bottom:1.5rem}
+.testi-full-author{font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--matte-black);font-weight:500}
+.testi-full-source{font-size:0.55rem;color:var(--mid-grey);letter-spacing:0.12em;margin-top:0.25rem}
+
+/* ─── AWARDS PAGE ─── */
+.awards-page{padding:4rem 4vw;background:var(--cream)}
+.awards-page-inner{max-width:1200px;margin:0 auto}
+.awards-full-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.award-full-card{background:var(--warm-white);padding:3rem 2rem;text-align:center;border-bottom:2px solid transparent;transition:all 0.3s}
+.award-full-card:hover{border-color:var(--accent-gold);transform:translateY(-4px);box-shadow:var(--shadow-soft)}
+.award-full-icon{font-size:2.5rem;margin-bottom:1.5rem}
+.award-full-title{font-family:var(--font-serif);font-size:1.25rem;font-weight:300;margin-bottom:0.75rem;color:var(--matte-black)}
+.award-full-year{font-size:0.6rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--accent-gold);margin-bottom:1rem}
+.award-full-desc{font-size:0.65rem;line-height:1.9;color:var(--mid-grey)}
+
 /* ─── TEAM PAGE ─── */
 .team-page{padding:4rem 4vw;background:var(--cream)}
 .team-page-inner{max-width:1200px;margin:0 auto}
 .team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;margin-top:2rem}
 .team-card{text-align:center;cursor:pointer}
-.team-card-avatar{
-  width:100%;aspect-ratio:1;background:linear-gradient(135deg,var(--beige) 0%,var(--light-grey) 100%);
-  margin-bottom:1.25rem;display:flex;align-items:center;justify-content:center;
-  font-family:var(--font-serif);font-size:2.5rem;color:rgba(155,150,144,0.3);font-weight:300;
-  overflow:hidden;transition:transform 0.4s;
-}
-.team-card:hover .team-card-avatar{transform:scale(1.02)}
+.team-card-avatar{width:100%;aspect-ratio:1;overflow:hidden;margin-bottom:1.25rem;transition:transform 0.4s;background:var(--beige)}
+.team-card-avatar img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s}
+.team-card:hover .team-card-avatar img{transform:scale(1.05)}
 .team-card-name{font-family:var(--font-serif);font-size:1.1rem;font-weight:300;margin-bottom:0.35rem}
 .team-card-role{font-size:0.55rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent-gold);margin-bottom:0.3rem}
 .team-card-area{font-size:0.6rem;color:var(--mid-grey)}
 
-/* ─── PRIVACY / TERMS ─── */
+/* ─── INSIGHTS PAGE ─── */
+.insights-page{padding:4rem 4vw;background:var(--cream)}
+.insights-page-inner{max-width:1200px;margin:0 auto}
+.insights-big-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem}
+
+/* ─── LEGAL PAGES ─── */
 .legal-page{padding:4rem 4vw 6rem;background:var(--cream)}
 .legal-inner{max-width:800px;margin:0 auto}
-.legal-title{font-family:var(--font-serif);font-size:2.5rem;font-weight:300;margin-bottom:3rem;color:var(--matte-black)}
-.legal-section{margin-bottom:2.5rem}
 .legal-h2{font-family:var(--font-serif);font-size:1.4rem;font-weight:300;color:var(--matte-black);margin-bottom:1rem}
+.legal-section{margin-bottom:2.5rem}
 .legal-p{font-size:0.72rem;line-height:2.1;color:var(--mid-grey);margin-bottom:1rem}
 
 /* ─── CONTACT PAGE ─── */
@@ -561,29 +345,27 @@ footer{background:var(--matte-black);padding:5rem 4vw 3rem;border-top:1px solid 
 .contact-page-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:8rem}
 
 /* ─── CTA BANNER ─── */
-.cta-banner{
-  background:var(--accent-gold);padding:5rem 4vw;text-align:center;
-}
+.cta-banner{background:var(--accent-gold);padding:5rem 4vw;text-align:center}
 .cta-banner-inner{max-width:700px;margin:0 auto}
 .cta-banner-title{font-family:var(--font-serif);font-size:clamp(2rem,4vw,3.5rem);font-weight:300;color:var(--matte-black);margin-bottom:1.5rem}
 .cta-banner-desc{font-size:0.7rem;letter-spacing:0.1em;color:rgba(26,25,22,0.65);margin-bottom:2.5rem;line-height:2}
-.btn-dark{
-  display:inline-flex;align-items:center;gap:0.75rem;
-  background:var(--matte-black);color:var(--cream);
-  font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;font-weight:400;
-  padding:1.1rem 2.5rem;border:none;cursor:pointer;transition:all 0.3s;font-family:var(--font-sans);
-}
+.btn-dark{display:inline-flex;align-items:center;gap:0.75rem;background:var(--matte-black);color:var(--cream);font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;font-weight:400;padding:1.1rem 2.5rem;border:none;cursor:pointer;transition:all 0.3s;font-family:var(--font-sans)}
 .btn-dark:hover{background:#2a2520;transform:translateY(-1px)}
-
-/* ─── DIVIDER ─── */
-.golden-divider{width:60px;height:1px;background:var(--accent-gold);margin:0 auto 3rem}
-.divider-left{margin:0 0 3rem}
 
 /* ─── SCROLL REVEAL ─── */
 .reveal{opacity:0;transform:translateY(24px);transition:opacity 0.7s ease,transform 0.7s ease}
 .reveal.visible{opacity:1;transform:none}
 
+/* ─── INSIGHT CARD IMAGE ─── */
+.insight-card-img{height:180px;overflow:hidden;margin:-2.5rem -2.5rem 2rem;position:relative}
+.insight-card-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s ease}
+.insight-card:hover .insight-card-img img{transform:scale(1.04)}
+
 /* ─── RESPONSIVE ─── */
+@media(max-width:1200px){
+  .footer-top{grid-template-columns:1fr 1fr 1fr;gap:2.5rem}
+  .footer-top > :first-child{grid-column:1/-1}
+}
 @media(max-width:1024px){
   .stats-grid{grid-template-columns:repeat(2,1fr)}
   .stat-item:nth-child(2){border-right:none}
@@ -595,28 +377,47 @@ footer{background:var(--matte-black);padding:5rem 4vw 3rem;border-top:1px solid 
   .about-page-grid{grid-template-columns:1fr;gap:4rem}
   .agent-team{grid-template-columns:1fr}
   .footer-top{grid-template-columns:1fr 1fr;gap:3rem}
-  .testi-card{min-width:calc(100% - 0rem)}
+  .footer-top > :first-child{grid-column:1/-1}
+  .testi-card{min-width:100%}
   .team-grid{grid-template-columns:repeat(3,1fr)}
   .services-big-grid{grid-template-columns:1fr}
   .awards-full-grid{grid-template-columns:repeat(2,1fr)}
   .contact-inner,.contact-page-inner{grid-template-columns:1fr;gap:4rem}
+  .insights-grid{grid-template-columns:1fr}
+  .testi-full-grid{grid-template-columns:1fr}
 }
 @media(max-width:768px){
   :root{--nav-h:60px}
   .nav-links,.nav-cta{display:none}
   .hamburger{display:flex}
-  .props-grid,.props-full-grid,.sold-grid,.testi-full-grid,.insights-big-grid,.services-big-grid,.awards-full-grid{grid-template-columns:1fr}
+  .props-grid,.props-full-grid,.sold-grid,.testi-full-grid,.insights-big-grid,.services-big-grid,.awards-full-grid,.insights-grid{grid-template-columns:1fr}
   .stats-grid{grid-template-columns:1fr 1fr}
   .footer-top{grid-template-columns:1fr}
   .team-grid{grid-template-columns:repeat(2,1fr)}
   .hero-actions{flex-direction:column;align-items:flex-start}
   .section-header{flex-direction:column;align-items:flex-start}
+  .about-inner{grid-template-columns:1fr;gap:3rem}
+  .about-img-wrap{aspect-ratio:4/3;max-height:320px}
+  .contact-inner,.contact-page-inner{grid-template-columns:1fr;gap:3rem}
+  .agent-team{grid-template-columns:1fr}
+  .about-page-grid{grid-template-columns:1fr}
+  .services-grid{grid-template-columns:1fr}
+  .awards-grid{grid-template-columns:repeat(2,1fr)}
+  .prop-img{height:200px}
+  .testi-card{padding:2rem}
+  .cta-banner{padding:3.5rem 4vw}
+  .hero-content{padding-left:5vw;padding-right:5vw}
 }
-@media(max-width:480px){
+@media(max-width:540px){
   .stats-grid{grid-template-columns:1fr}
   .stat-item{border-right:none!important;border-bottom:1px solid var(--light-grey)}
   .team-grid{grid-template-columns:1fr 1fr}
   .awards-grid{grid-template-columns:1fr 1fr}
+  .awards-full-grid{grid-template-columns:1fr}
+  .footer-top{grid-template-columns:1fr}
+  .filter-bar{flex-wrap:wrap;border:none;gap:0.5rem}
+  .filter-btn{border:1px solid var(--light-grey);padding:0.6rem 1.2rem}
+  .hero-title{font-size:clamp(3rem,12vw,5rem)}
 }
 </style>
 </head>
@@ -665,65 +466,44 @@ footer{background:var(--matte-black);padding:5rem 4vw 3rem;border-top:1px solid 
   <a onclick="navigate('contact');toggleMobile()" style="transition-delay:0.55s">Contact</a>
 </div>
 
-<!-- ════════════════════════════════════════ PAGE: HOME ═══════════════════════════════════════ -->
+<!-- ══════════ PAGE: HOME ══════════ -->
 <div class="page active" id="page-home">
-
-  <!-- HERO -->
   <section class="hero">
     <div class="hero-bg"></div>
+    <div class="hero-img"></div>
     <div class="hero-pattern"></div>
     <div class="hero-orb hero-orb-1"></div>
     <div class="hero-orb hero-orb-2"></div>
     <div class="hero-content">
       <div class="hero-eyebrow">Licensed Salespersons · New Zealand</div>
-      <h1 class="hero-title">
-        Where<br><em>Luxury</em><br>Finds<br>Its Home
-      </h1>
+      <h1 class="hero-title">Where<br><em>Luxury</em><br>Finds<br>Its Home</h1>
       <p class="hero-desc">Scott & Michael deliver a premium real estate experience across New Zealand — combining unrivalled local knowledge with world-class service and no upfront costs.</p>
       <div class="hero-actions">
         <button class="btn-primary" onclick="navigate('properties')">View Properties →</button>
         <button class="btn-ghost" onclick="navigate('about')">Our Story</button>
       </div>
     </div>
-    <div class="hero-scroll">
-      <span>Scroll</span>
-      <div class="scroll-line"></div>
-    </div>
+    <div class="hero-scroll"><span>Scroll</span><div class="scroll-line"></div></div>
   </section>
 
-  <!-- MARQUEE -->
   <div class="marquee-section">
-    <div class="marquee-track" id="marqueeTrack">
+    <div class="marquee-track">
       <div class="marquee-item">Hibiscus Coast <span class="marquee-dot"></span> North Shore <span class="marquee-dot"></span> Auckland Central <span class="marquee-dot"></span> Franklin <span class="marquee-dot"></span> Waikato <span class="marquee-dot"></span> Bay of Plenty <span class="marquee-dot"></span> Canterbury <span class="marquee-dot"></span> Wellington <span class="marquee-dot"></span> Hawke's Bay <span class="marquee-dot"></span> Northland <span class="marquee-dot"></span> Otago <span class="marquee-dot"></span> Nelson / Tasman <span class="marquee-dot"></span> Hibiscus Coast <span class="marquee-dot"></span> North Shore <span class="marquee-dot"></span> Auckland Central <span class="marquee-dot"></span> Franklin <span class="marquee-dot"></span> Waikato <span class="marquee-dot"></span> Bay of Plenty <span class="marquee-dot"></span> Canterbury <span class="marquee-dot"></span> Wellington <span class="marquee-dot"></span></div>
     </div>
   </div>
 
-  <!-- STATS -->
   <section class="stats-section">
     <div class="stats-inner">
       <div class="stats-label">By the Numbers</div>
       <div class="stats-grid">
-        <div class="stat-item" data-delay="0">
-          <div class="stat-num">500<em>+</em></div>
-          <div class="stat-label">Properties Sold</div>
-        </div>
-        <div class="stat-item" data-delay="150">
-          <div class="stat-num">15<em>+</em></div>
-          <div class="stat-label">Years Experience</div>
-        </div>
-        <div class="stat-item" data-delay="300">
-          <div class="stat-num">98<em>%</em></div>
-          <div class="stat-label">Client Satisfaction</div>
-        </div>
-        <div class="stat-item" data-delay="450">
-          <div class="stat-num">$0</div>
-          <div class="stat-label">Upfront Cost — No Sale, No Fee</div>
-        </div>
+        <div class="stat-item"><div class="stat-num">500<em>+</em></div><div class="stat-label">Properties Sold</div></div>
+        <div class="stat-item"><div class="stat-num">15<em>+</em></div><div class="stat-label">Years Experience</div></div>
+        <div class="stat-item"><div class="stat-num">98<em>%</em></div><div class="stat-label">Client Satisfaction</div></div>
+        <div class="stat-item"><div class="stat-num">$0</div><div class="stat-label">Upfront Cost — No Sale, No Fee</div></div>
       </div>
     </div>
   </section>
 
-  <!-- FEATURED PROPERTIES -->
   <section class="props-section">
     <div class="section-header">
       <div>
@@ -735,12 +515,10 @@ footer{background:var(--matte-black);padding:5rem 4vw 3rem;border-top:1px solid 
     <div class="props-grid" id="featuredGrid"></div>
   </section>
 
-  <!-- ABOUT TEASER -->
   <section class="about-section">
     <div class="about-inner">
       <div class="about-img-wrap reveal">
-        <div class="about-img-frame-accent"></div>
-        <div class="about-img-inner"><div class="about-img-placeholder">S&M</div></div>
+        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=900&q=80&auto=format&fit=crop" alt="Luxury home" loading="lazy">
       </div>
       <div class="about-content">
         <div class="about-eyebrow reveal">About Us</div>
@@ -760,7 +538,6 @@ footer{background:var(--matte-black);padding:5rem 4vw 3rem;border-top:1px solid 
     </div>
   </section>
 
-  <!-- TESTIMONIALS -->
   <section class="testi-section">
     <div class="testi-inner">
       <div class="testi-eyebrow">Client Voices</div>
@@ -775,47 +552,21 @@ footer{background:var(--matte-black);padding:5rem 4vw 3rem;border-top:1px solid 
     </div>
   </section>
 
-  <!-- SERVICES SNAPSHOT -->
   <section class="services-section">
     <div class="services-inner">
       <div class="section-eyebrow">What We Offer</div>
       <h2 class="section-title">Comprehensive<br><em>Services</em></h2>
       <div class="services-grid">
-        <div class="service-card reveal">
-          <div class="service-num">01</div>
-          <div class="service-title">Licensed Agent — Assigned to You</div>
-          <div class="service-desc">Your dedicated, fully licensed real estate professional stays with you from listing to settlement. No fixed-term agreements. Open contract only.</div>
-        </div>
-        <div class="service-card reveal">
-          <div class="service-num">02</div>
-          <div class="service-title">Premium Photography & Marketing</div>
-          <div class="service-desc">Indoor & outdoor photography, 4K drone aerial footage, HD videography, professional copywriting, and architectural floor plans — all included.</div>
-        </div>
-        <div class="service-card reveal">
-          <div class="service-num">03</div>
-          <div class="service-title">Maximum Market Exposure</div>
-          <div class="service-desc">Listings on Trade Me (#1 NZ real estate site), realestate.co.nz (#2), Homes.co.nz, OneRoof, Hougarden, and Arizto — plus physical signage.</div>
-        </div>
-        <div class="service-card reveal">
-          <div class="service-num">04</div>
-          <div class="service-title">Seller Dashboard & Full Transparency</div>
-          <div class="service-desc">Monitor your sale live — online exposure, scheduled viewings, buyer feedback, offers, and all marketing activity. Real-time, 24/7.</div>
-        </div>
-        <div class="service-card reveal">
-          <div class="service-num">05</div>
-          <div class="service-title">Complete Legal Paperwork</div>
-          <div class="service-desc">Sale contracts, Certificate of Title, and rental appraisal — all prepared on your behalf, saving thousands in solicitor fees.</div>
-        </div>
-        <div class="service-card reveal">
-          <div class="service-num">06</div>
-          <div class="service-title">No Sale, No Fee</div>
-          <div class="service-desc">Zero upfront costs. You pay nothing until your property is sold. The ultimate risk-free real estate partnership.</div>
-        </div>
+        <div class="service-card reveal"><div class="service-num">01</div><div class="service-title">Licensed Agent — Assigned to You</div><div class="service-desc">Your dedicated, fully licensed real estate professional stays with you from listing to settlement. No fixed-term agreements. Open contract only.</div></div>
+        <div class="service-card reveal"><div class="service-num">02</div><div class="service-title">Premium Photography & Marketing</div><div class="service-desc">Indoor & outdoor photography, 4K drone aerial footage, HD videography, professional copywriting, and architectural floor plans — all included.</div></div>
+        <div class="service-card reveal"><div class="service-num">03</div><div class="service-title">Maximum Market Exposure</div><div class="service-desc">Listings on Trade Me (#1 NZ real estate site), realestate.co.nz (#2), Homes.co.nz, OneRoof, Hougarden, and Arizto — plus physical signage.</div></div>
+        <div class="service-card reveal"><div class="service-num">04</div><div class="service-title">Seller Dashboard & Transparency</div><div class="service-desc">Monitor your sale live — online exposure, scheduled viewings, buyer feedback, offers, and all marketing activity. Real-time, 24/7.</div></div>
+        <div class="service-card reveal"><div class="service-num">05</div><div class="service-title">Complete Legal Paperwork</div><div class="service-desc">Sale contracts, Certificate of Title, and rental appraisal — all prepared on your behalf, saving thousands in solicitor fees.</div></div>
+        <div class="service-card reveal"><div class="service-num">06</div><div class="service-title">No Sale, No Fee</div><div class="service-desc">Zero upfront costs. You pay nothing until your property is sold. The ultimate risk-free real estate partnership.</div></div>
       </div>
     </div>
   </section>
 
-  <!-- AWARDS STRIP -->
   <section class="awards-section">
     <div class="awards-inner">
       <div class="testi-eyebrow">Recognition</div>
@@ -829,7 +580,6 @@ footer{background:var(--matte-black);padding:5rem 4vw 3rem;border-top:1px solid 
     </div>
   </section>
 
-  <!-- INSIGHTS TEASER -->
   <section class="insights-section">
     <div class="insights-inner">
       <div class="section-header">
@@ -843,7 +593,6 @@ footer{background:var(--matte-black);padding:5rem 4vw 3rem;border-top:1px solid 
     </div>
   </section>
 
-  <!-- CTA BANNER -->
   <div class="cta-banner">
     <div class="cta-banner-inner">
       <h2 class="cta-banner-title">Ready to Find Your Perfect Property?</h2>
@@ -851,15 +600,14 @@ footer{background:var(--matte-black);padding:5rem 4vw 3rem;border-top:1px solid 
       <button class="btn-dark" onclick="navigate('contact')">Book a Free Appraisal →</button>
     </div>
   </div>
-
-  <!-- FOOTER injected by JS -->
   <div id="footer-home"></div>
 </div>
 
-<!-- ════════════════════════════════════════ PAGE: ABOUT ════════════════════════════════════════ -->
+<!-- ══════════ PAGE: ABOUT ══════════ -->
 <div class="page" id="page-about">
   <div class="page-hero">
     <div class="page-hero-bg"></div>
+    <div class="page-hero-bg-img" style="background-image:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1400&q=80&auto=format&fit=crop')"></div>
     <div class="page-hero-orb"></div>
     <div class="page-hero-content">
       <div class="page-hero-eyebrow">Our Story</div>
@@ -881,13 +629,17 @@ footer{background:var(--matte-black);padding:5rem 4vw 3rem;border-top:1px solid 
         </div>
         <div class="about-img-block">
           <div class="about-img-frame-accent"></div>
-          <div class="about-img-frame"><span style="font-family:var(--font-serif);font-size:4rem;color:rgba(155,150,144,0.2);font-weight:300">S&M</span></div>
+          <div class="about-img-frame">
+            <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80&auto=format&fit=crop" alt="Luxury property" loading="lazy">
+          </div>
         </div>
       </div>
 
       <div class="agent-team">
         <div class="agent-card">
-          <div class="agent-avatar">S</div>
+          <div class="agent-avatar">
+            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=240&q=80&auto=format&fit=crop&crop=face" alt="Scott" loading="lazy">
+          </div>
           <div class="agent-name">Scott</div>
           <div class="agent-role">Licensed Salesperson · REAA 2008</div>
           <div class="agent-desc">Scott brings deep expertise in the Hibiscus Coast and North Shore real estate markets. Known for his methodical approach, sharp negotiation skills, and unwavering dedication to his clients' best interests, Scott has consistently delivered outstanding results in New Zealand's most competitive suburbs.</div>
@@ -897,7 +649,9 @@ footer{background:var(--matte-black);padding:5rem 4vw 3rem;border-top:1px solid 
           </div>
         </div>
         <div class="agent-card">
-          <div class="agent-avatar">M</div>
+          <div class="agent-avatar">
+            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=240&q=80&auto=format&fit=crop&crop=face" alt="Michael" loading="lazy">
+          </div>
           <div class="agent-name">Michael</div>
           <div class="agent-role">Licensed Salesperson · REAA 2008</div>
           <div class="agent-desc">Michael is widely regarded as one of the most knowledgeable and hardworking agents in his territory. Clients consistently praise his communication, market insight, and above-and-beyond service ethic. Michael specialises in achieving record results, often surpassing vendor expectations through strategic marketing and expert buyer management.</div>
@@ -912,21 +666,9 @@ footer{background:var(--matte-black);padding:5rem 4vw 3rem;border-top:1px solid 
         <div class="section-eyebrow">Our Philosophy</div>
         <h2 class="section-title" style="margin-bottom:3rem">The Values That<br><em>Drive Us</em></h2>
         <div class="services-grid">
-          <div class="service-card reveal">
-            <div class="service-num">01</div>
-            <div class="service-title">Radical Transparency</div>
-            <div class="service-desc">You see everything — every enquiry, every viewing, every piece of feedback. No black boxes. Full access to your live seller dashboard, always.</div>
-          </div>
-          <div class="service-card reveal">
-            <div class="service-num">02</div>
-            <div class="service-title">Zero Risk Model</div>
-            <div class="service-desc">We invest in your sale. Our no-upfront-cost model means you only pay upon a successful settlement. Your financial security comes first.</div>
-          </div>
-          <div class="service-card reveal">
-            <div class="service-num">03</div>
-            <div class="service-title">Excellence Without Compromise</div>
-            <div class="service-desc">From DJI 4K drone photography to professional copywriting — every element of your listing is crafted to the highest possible standard.</div>
-          </div>
+          <div class="service-card reveal"><div class="service-num">01</div><div class="service-title">Radical Transparency</div><div class="service-desc">You see everything — every enquiry, every viewing, every piece of feedback. No black boxes. Full access to your live seller dashboard, always.</div></div>
+          <div class="service-card reveal"><div class="service-num">02</div><div class="service-title">Zero Risk Model</div><div class="service-desc">We invest in your sale. Our no-upfront-cost model means you only pay upon a successful settlement. Your financial security comes first.</div></div>
+          <div class="service-card reveal"><div class="service-num">03</div><div class="service-title">Excellence Without Compromise</div><div class="service-desc">From DJI 4K drone photography to professional copywriting — every element of your listing is crafted to the highest possible standard.</div></div>
         </div>
       </div>
     </div>
@@ -941,10 +683,11 @@ footer{background:var(--matte-black);padding:5rem 4vw 3rem;border-top:1px solid 
   <div id="footer-about"></div>
 </div>
 
-<!-- ════════════════════════════════════════ PAGE: PROPERTIES ═════════════════════════════════ -->
+<!-- ══════════ PAGE: PROPERTIES ══════════ -->
 <div class="page" id="page-properties">
   <div class="page-hero">
     <div class="page-hero-bg"></div>
+    <div class="page-hero-bg-img" style="background-image:url('https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=1400&q=80&auto=format&fit=crop')"></div>
     <div class="page-hero-orb"></div>
     <div class="page-hero-content">
       <div class="page-hero-eyebrow">Current Listings</div>
@@ -972,10 +715,11 @@ footer{background:var(--matte-black);padding:5rem 4vw 3rem;border-top:1px solid 
   <div id="footer-properties"></div>
 </div>
 
-<!-- ════════════════════════════════════════ PAGE: SOLD ══════════════════════════════════════ -->
+<!-- ══════════ PAGE: SOLD ══════════ -->
 <div class="page" id="page-sold">
   <div class="page-hero">
     <div class="page-hero-bg"></div>
+    <div class="page-hero-bg-img" style="background-image:url('https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=1400&q=80&auto=format&fit=crop')"></div>
     <div class="page-hero-orb"></div>
     <div class="page-hero-content">
       <div class="page-hero-eyebrow">Our Track Record</div>
@@ -996,10 +740,11 @@ footer{background:var(--matte-black);padding:5rem 4vw 3rem;border-top:1px solid 
   <div id="footer-sold"></div>
 </div>
 
-<!-- ════════════════════════════════════════ PAGE: SERVICES ═══════════════════════════════════ -->
+<!-- ══════════ PAGE: SERVICES ══════════ -->
 <div class="page" id="page-services">
   <div class="page-hero">
     <div class="page-hero-bg"></div>
+    <div class="page-hero-bg-img" style="background-image:url('https://images.unsplash.com/photo-1560185893-a55cbc8c57e8?w=1400&q=80&auto=format&fit=crop')"></div>
     <div class="page-hero-orb"></div>
     <div class="page-hero-content">
       <div class="page-hero-eyebrow">What We Provide</div>
@@ -1011,78 +756,12 @@ footer{background:var(--matte-black);padding:5rem 4vw 3rem;border-top:1px solid 
       <div class="section-eyebrow" style="margin-bottom:1rem">Everything Included — No Upfront Cost</div>
       <p style="font-size:0.75rem;color:var(--mid-grey);max-width:600px;line-height:2;letter-spacing:0.05em;margin-bottom:4rem">Sign up to list your property with Scott & Michael through Arizto — get everything listed below and pay nothing until your property is sold.</p>
       <div class="services-big-grid">
-        <div class="service-big-card">
-          <div class="service-big-num">01</div>
-          <div class="service-big-title">Your Dedicated Licensed Agent</div>
-          <div class="service-big-desc">A fully licensed, experienced local expert is assigned exclusively to your property — from listing to settlement.</div>
-          <ul class="service-big-list">
-            <li>Open Contract — no fixed-term agreements</li>
-            <li>Experienced local expert in your suburb</li>
-            <li>Assigned until your property is SOLD</li>
-            <li>Available for all viewings — indoor & outdoor</li>
-            <li>Expert buyer negotiation on your behalf</li>
-          </ul>
-        </div>
-        <div class="service-big-card">
-          <div class="service-big-num">02</div>
-          <div class="service-big-title">Professional Photography & Media</div>
-          <div class="service-big-desc">Your property deserves to be presented at its absolute finest — with production-quality visuals that attract premium buyers.</div>
-          <ul class="service-big-list">
-            <li>Indoor & outdoor photography</li>
-            <li>4K aerial drone footage (DJI)</li>
-            <li>HD videography for every listing</li>
-            <li>Architectural floor plan development</li>
-            <li>Professional copywriter-written listing description</li>
-          </ul>
-        </div>
-        <div class="service-big-card">
-          <div class="service-big-num">03</div>
-          <div class="service-big-title">Maximum Market Exposure</div>
-          <div class="service-big-desc">Your property reaches thousands of qualified buyers across all major platforms — simultaneously.</div>
-          <ul class="service-big-list">
-            <li>Trade Me — NZ's #1 real estate website</li>
-            <li>realestate.co.nz — NZ's #2 real estate website</li>
-            <li>Homes.co.nz, OneRoof & Hougarden</li>
-            <li>Arizto.co.nz listing</li>
-            <li>Professional signboard installed at your property</li>
-          </ul>
-        </div>
-        <div class="service-big-card">
-          <div class="service-big-num">04</div>
-          <div class="service-big-title">Online Seller Dashboard</div>
-          <div class="service-big-desc">Real-time visibility into every aspect of your sale — wherever you are, whenever you want it.</div>
-          <ul class="service-big-list">
-            <li>Live online exposure & enquiry tracking</li>
-            <li>Scheduled viewings calendar</li>
-            <li>Buyer feedback reports</li>
-            <li>Offer management & progress tracking</li>
-            <li>Full marketing activity log</li>
-          </ul>
-        </div>
-        <div class="service-big-card">
-          <div class="service-big-num">05</div>
-          <div class="service-big-title">Legal Paperwork & Documentation</div>
-          <div class="service-big-desc">All necessary legal and property documentation is prepared on your behalf — saving you thousands in solicitor fees.</div>
-          <ul class="service-big-list">
-            <li>Sale and Purchase Contracts</li>
-            <li>Certificate of Title</li>
-            <li>Rental Appraisal Report</li>
-            <li>Liaison with your solicitor</li>
-            <li>Pre-settlement documentation coordination</li>
-          </ul>
-        </div>
-        <div class="service-big-card">
-          <div class="service-big-num">06</div>
-          <div class="service-big-title">7-Day Support Team</div>
-          <div class="service-big-desc">Our NZ-based support team works on your behalf throughout the process — 7 days a week, without exception.</div>
-          <ul class="service-big-list">
-            <li>7-day NZ-based support availability</li>
-            <li>Marketing approval & coordination</li>
-            <li>Solicitor communication management</li>
-            <li>Buyer enquiry handling</li>
-            <li>Settlement coordination support</li>
-          </ul>
-        </div>
+        <div class="service-big-card"><div class="service-big-num">01</div><div class="service-big-title">Your Dedicated Licensed Agent</div><div class="service-big-desc">A fully licensed, experienced local expert is assigned exclusively to your property — from listing to settlement.</div><ul class="service-big-list"><li>Open Contract — no fixed-term agreements</li><li>Experienced local expert in your suburb</li><li>Assigned until your property is SOLD</li><li>Available for all viewings — indoor & outdoor</li><li>Expert buyer negotiation on your behalf</li></ul></div>
+        <div class="service-big-card"><div class="service-big-num">02</div><div class="service-big-title">Professional Photography & Media</div><div class="service-big-desc">Your property deserves to be presented at its absolute finest — with production-quality visuals that attract premium buyers.</div><ul class="service-big-list"><li>Indoor & outdoor photography</li><li>4K aerial drone footage (DJI)</li><li>HD videography for every listing</li><li>Architectural floor plan development</li><li>Professional copywriter-written listing description</li></ul></div>
+        <div class="service-big-card"><div class="service-big-num">03</div><div class="service-big-title">Maximum Market Exposure</div><div class="service-big-desc">Your property reaches thousands of qualified buyers across all major platforms — simultaneously.</div><ul class="service-big-list"><li>Trade Me — NZ's #1 real estate website</li><li>realestate.co.nz — NZ's #2 real estate website</li><li>Homes.co.nz, OneRoof & Hougarden</li><li>Arizto.co.nz listing</li><li>Professional signboard installed at your property</li></ul></div>
+        <div class="service-big-card"><div class="service-big-num">04</div><div class="service-big-title">Online Seller Dashboard</div><div class="service-big-desc">Real-time visibility into every aspect of your sale — wherever you are, whenever you want it.</div><ul class="service-big-list"><li>Live online exposure & enquiry tracking</li><li>Scheduled viewings calendar</li><li>Buyer feedback reports</li><li>Offer management & progress tracking</li><li>Full marketing activity log</li></ul></div>
+        <div class="service-big-card"><div class="service-big-num">05</div><div class="service-big-title">Legal Paperwork & Documentation</div><div class="service-big-desc">All necessary legal and property documentation is prepared on your behalf — saving you thousands in solicitor fees.</div><ul class="service-big-list"><li>Sale and Purchase Contracts</li><li>Certificate of Title</li><li>Rental Appraisal Report</li><li>Liaison with your solicitor</li><li>Pre-settlement documentation coordination</li></ul></div>
+        <div class="service-big-card"><div class="service-big-num">06</div><div class="service-big-title">7-Day Support Team</div><div class="service-big-desc">Our NZ-based support team works on your behalf throughout the process — 7 days a week, without exception.</div><ul class="service-big-list"><li>7-day NZ-based support availability</li><li>Marketing approval & coordination</li><li>Solicitor communication management</li><li>Buyer enquiry handling</li><li>Settlement coordination support</li></ul></div>
       </div>
     </div>
   </div>
@@ -1096,10 +775,11 @@ footer{background:var(--matte-black);padding:5rem 4vw 3rem;border-top:1px solid 
   <div id="footer-services"></div>
 </div>
 
-<!-- ════════════════════════════════════════ PAGE: INSIGHTS ══════════════════════════════════ -->
+<!-- ══════════ PAGE: INSIGHTS ══════════ -->
 <div class="page" id="page-insights">
   <div class="page-hero">
     <div class="page-hero-bg"></div>
+    <div class="page-hero-bg-img" style="background-image:url('https://images.unsplash.com/photo-1504615755583-2916b52192a3?w=1400&q=80&auto=format&fit=crop')"></div>
     <div class="page-hero-orb"></div>
     <div class="page-hero-content">
       <div class="page-hero-eyebrow">Market Intelligence</div>
@@ -1114,10 +794,11 @@ footer{background:var(--matte-black);padding:5rem 4vw 3rem;border-top:1px solid 
   <div id="footer-insights"></div>
 </div>
 
-<!-- ════════════════════════════════════════ PAGE: TESTIMONIALS ══════════════════════════════ -->
+<!-- ══════════ PAGE: TESTIMONIALS ══════════ -->
 <div class="page" id="page-testimonials">
   <div class="page-hero">
     <div class="page-hero-bg"></div>
+    <div class="page-hero-bg-img" style="background-image:url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1400&q=80&auto=format&fit=crop')"></div>
     <div class="page-hero-orb"></div>
     <div class="page-hero-content">
       <div class="page-hero-eyebrow">Client Stories</div>
@@ -1132,10 +813,11 @@ footer{background:var(--matte-black);padding:5rem 4vw 3rem;border-top:1px solid 
   <div id="footer-testimonials"></div>
 </div>
 
-<!-- ════════════════════════════════════════ PAGE: AWARDS ════════════════════════════════════ -->
+<!-- ══════════ PAGE: AWARDS ══════════ -->
 <div class="page" id="page-awards">
   <div class="page-hero">
     <div class="page-hero-bg"></div>
+    <div class="page-hero-bg-img" style="background-image:url('https://images.unsplash.com/photo-1567427018141-0584cfcbf1b8?w=1400&q=80&auto=format&fit=crop')"></div>
     <div class="page-hero-orb"></div>
     <div class="page-hero-content">
       <div class="page-hero-eyebrow">Recognition & Excellence</div>
@@ -1159,10 +841,11 @@ footer{background:var(--matte-black);padding:5rem 4vw 3rem;border-top:1px solid 
   <div id="footer-awards"></div>
 </div>
 
-<!-- ════════════════════════════════════════ PAGE: TEAM ══════════════════════════════════════ -->
+<!-- ══════════ PAGE: TEAM ══════════ -->
 <div class="page" id="page-team">
   <div class="page-hero">
     <div class="page-hero-bg"></div>
+    <div class="page-hero-bg-img" style="background-image:url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1400&q=80&auto=format&fit=crop')"></div>
     <div class="page-hero-orb"></div>
     <div class="page-hero-content">
       <div class="page-hero-eyebrow">The People Behind the Results</div>
@@ -1179,10 +862,11 @@ footer{background:var(--matte-black);padding:5rem 4vw 3rem;border-top:1px solid 
   <div id="footer-team"></div>
 </div>
 
-<!-- ════════════════════════════════════════ PAGE: CONTACT ═══════════════════════════════════ -->
+<!-- ══════════ PAGE: CONTACT ══════════ -->
 <div class="page" id="page-contact">
   <div class="page-hero">
     <div class="page-hero-bg"></div>
+    <div class="page-hero-bg-img" style="background-image:url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1400&q=80&auto=format&fit=crop')"></div>
     <div class="page-hero-orb"></div>
     <div class="page-hero-content">
       <div class="page-hero-eyebrow">Get in Touch</div>
@@ -1196,55 +880,21 @@ footer{background:var(--matte-black);padding:5rem 4vw 3rem;border-top:1px solid 
         <h2 class="about-title">We're Here to<br><em>Help You</em></h2>
         <p class="about-text">Whether you're ready to list, curious about your property's value, or simply exploring your options — Scott & Michael are here to guide you every step of the way. Reach out today for a free, no-obligation conversation.</p>
         <div class="contact-details">
-          <div class="contact-detail-item">
-            <div class="contact-detail-label">Phone</div>
-            <div class="contact-detail-value"><a href="tel:0800540550" style="color:inherit;text-decoration:none">0800 540 550</a></div>
-          </div>
-          <div class="contact-detail-item">
-            <div class="contact-detail-label">Scott — Direct</div>
-            <div class="contact-detail-value"><a href="tel:021027272180" style="color:inherit;text-decoration:none">021 027 27218</a></div>
-          </div>
-          <div class="contact-detail-item">
-            <div class="contact-detail-label">Email</div>
-            <div class="contact-detail-value"><a href="mailto:scott@arizto.co.nz" style="color:inherit;text-decoration:none">scott@arizto.co.nz</a></div>
-          </div>
-          <div class="contact-detail-item">
-            <div class="contact-detail-label">Support</div>
-            <div class="contact-detail-value">7 Days · 8am – 8pm NZT</div>
-          </div>
-          <div class="contact-detail-item">
-            <div class="contact-detail-label">Network</div>
-            <div class="contact-detail-value">Arizto Real Estate · NZ</div>
-          </div>
+          <div><div class="contact-detail-label">Phone</div><div class="contact-detail-value"><a href="tel:0800540550" style="color:inherit;text-decoration:none">0800 540 550</a></div></div>
+          <div><div class="contact-detail-label">Scott — Direct</div><div class="contact-detail-value"><a href="tel:021027272180" style="color:inherit;text-decoration:none">021 027 27218</a></div></div>
+          <div><div class="contact-detail-label">Michael — Direct</div><div class="contact-detail-value"><a href="tel:021486453" style="color:inherit;text-decoration:none">021 486 453</a></div></div>
+          <div><div class="contact-detail-label">Email</div><div class="contact-detail-value"><a href="mailto:scott@arizto.co.nz" style="color:inherit;text-decoration:none">scott@arizto.co.nz</a></div></div>
+          <div><div class="contact-detail-label">Support</div><div class="contact-detail-value">7 Days · 8am – 8pm NZT</div></div>
+          <div><div class="contact-detail-label">Network</div><div class="contact-detail-value">Arizto Real Estate · NZ</div></div>
         </div>
       </div>
-      <div class="contact-form">
+      <div>
         <div class="about-eyebrow">Send a Message</div>
-        <div class="form-group">
-          <label class="form-label">Full Name</label>
-          <input class="form-input" type="text" placeholder="Your full name">
-        </div>
-        <div class="form-group">
-          <label class="form-label">Email Address</label>
-          <input class="form-input" type="email" placeholder="your@email.com">
-        </div>
-        <div class="form-group">
-          <label class="form-label">Phone Number</label>
-          <input class="form-input" type="tel" placeholder="+64 XX XXX XXXX">
-        </div>
-        <div class="form-group">
-          <label class="form-label">Enquiry Type</label>
-          <select class="form-select">
-            <option>Free Property Appraisal</option>
-            <option>Buying Enquiry</option>
-            <option>Current Listing Enquiry</option>
-            <option>General Question</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Message</label>
-          <textarea class="form-textarea" placeholder="Tell us about your property or enquiry..."></textarea>
-        </div>
+        <div class="form-group"><label class="form-label">Full Name</label><input class="form-input" type="text" placeholder="Your full name"></div>
+        <div class="form-group"><label class="form-label">Email Address</label><input class="form-input" type="email" placeholder="your@email.com"></div>
+        <div class="form-group"><label class="form-label">Phone Number</label><input class="form-input" type="tel" placeholder="+64 XX XXX XXXX"></div>
+        <div class="form-group"><label class="form-label">Enquiry Type</label><select class="form-select"><option>Free Property Appraisal</option><option>Buying Enquiry</option><option>Current Listing Enquiry</option><option>General Question</option></select></div>
+        <div class="form-group"><label class="form-label">Message</label><textarea class="form-textarea" placeholder="Tell us about your property or enquiry..."></textarea></div>
         <button class="form-submit">Send Message →</button>
       </div>
     </div>
@@ -1252,7 +902,7 @@ footer{background:var(--matte-black);padding:5rem 4vw 3rem;border-top:1px solid 
   <div id="footer-contact"></div>
 </div>
 
-<!-- ════════════════════════════════════════ PAGE: PRIVACY ═══════════════════════════════════ -->
+<!-- ══════════ PAGE: PRIVACY ══════════ -->
 <div class="page" id="page-privacy">
   <div class="page-hero">
     <div class="page-hero-bg"></div>
@@ -1264,32 +914,17 @@ footer{background:var(--matte-black);padding:5rem 4vw 3rem;border-top:1px solid 
   </div>
   <div class="legal-page">
     <div class="legal-inner">
-      <div class="legal-section">
-        <div class="legal-h2">1. Information We Collect</div>
-        <p class="legal-p">We collect information you provide directly to us, such as when you contact us for a property appraisal, register your interest in a property, or submit an enquiry through our website. This includes your name, email address, phone number, property address, and any other information you choose to provide.</p>
-      </div>
-      <div class="legal-section">
-        <div class="legal-h2">2. How We Use Your Information</div>
-        <p class="legal-p">We use the information we collect to provide, maintain and improve our services; process transactions and send related information; send you technical notices, updates and support messages; respond to your comments and questions; and send you marketing communications.</p>
-      </div>
-      <div class="legal-section">
-        <div class="legal-h2">3. Information Sharing</div>
-        <p class="legal-p">We do not sell, trade, or otherwise transfer your personally identifiable information to outside parties except where required to provide our real estate services, comply with legal obligations, or with your explicit consent.</p>
-      </div>
-      <div class="legal-section">
-        <div class="legal-h2">4. Data Security</div>
-        <p class="legal-p">We implement appropriate security measures to protect against unauthorised access, alteration, disclosure, or destruction of your personal information. However, no method of transmission over the Internet is 100% secure.</p>
-      </div>
-      <div class="legal-section">
-        <div class="legal-h2">5. Contact</div>
-        <p class="legal-p">If you have questions about this Privacy Policy, please contact us at scott@arizto.co.nz or call 0800 540 550.</p>
-      </div>
+      <div class="legal-section"><div class="legal-h2">1. Information We Collect</div><p class="legal-p">We collect information you provide directly to us, such as when you contact us for a property appraisal, register your interest in a property, or submit an enquiry through our website. This includes your name, email address, phone number, property address, and any other information you choose to provide.</p></div>
+      <div class="legal-section"><div class="legal-h2">2. How We Use Your Information</div><p class="legal-p">We use the information we collect to provide, maintain and improve our services; process transactions and send related information; send you technical notices, updates and support messages; respond to your comments and questions; and send you marketing communications.</p></div>
+      <div class="legal-section"><div class="legal-h2">3. Information Sharing</div><p class="legal-p">We do not sell, trade, or otherwise transfer your personally identifiable information to outside parties except where required to provide our real estate services, comply with legal obligations, or with your explicit consent.</p></div>
+      <div class="legal-section"><div class="legal-h2">4. Data Security</div><p class="legal-p">We implement appropriate security measures to protect against unauthorised access, alteration, disclosure, or destruction of your personal information. However, no method of transmission over the Internet is 100% secure.</p></div>
+      <div class="legal-section"><div class="legal-h2">5. Contact</div><p class="legal-p">If you have questions about this Privacy Policy, please contact us at scott@arizto.co.nz or call 0800 540 550.</p></div>
     </div>
   </div>
   <div id="footer-privacy"></div>
 </div>
 
-<!-- ════════════════════════════════════════ PAGE: TERMS ═════════════════════════════════════ -->
+<!-- ══════════ PAGE: TERMS ══════════ -->
 <div class="page" id="page-terms">
   <div class="page-hero">
     <div class="page-hero-bg"></div>
@@ -1301,53 +936,84 @@ footer{background:var(--matte-black);padding:5rem 4vw 3rem;border-top:1px solid 
   </div>
   <div class="legal-page">
     <div class="legal-inner">
-      <div class="legal-section">
-        <div class="legal-h2">1. Agreement to Terms</div>
-        <p class="legal-p">By accessing and using this website and our real estate services, you accept and agree to be bound by these Terms and Conditions. If you do not agree to these terms, please do not use our services.</p>
-      </div>
-      <div class="legal-section">
-        <div class="legal-h2">2. Real Estate Services</div>
-        <p class="legal-p">Scott & Michael are licensed salespersons under the Real Estate Agents Act 2008 (REAA 2008), operating under the Arizto Real Estate platform. All services are provided in accordance with New Zealand real estate law and the standards set by the Real Estate Authority (REA).</p>
-      </div>
-      <div class="legal-section">
-        <div class="legal-h2">3. Property Information</div>
-        <p class="legal-p">Property details, pricing information, and related content on this website are provided for informational purposes only. While we endeavour to keep information accurate and up to date, we cannot guarantee the completeness or accuracy of all information at all times.</p>
-      </div>
-      <div class="legal-section">
-        <div class="legal-h2">4. No Upfront Cost Service</div>
-        <p class="legal-p">Our no upfront cost service means you pay our commission only upon successful settlement of your property. Specific terms and commission rates are outlined in your individual listing agreement and may vary based on property type and agreed services.</p>
-      </div>
-      <div class="legal-section">
-        <div class="legal-h2">5. Intellectual Property</div>
-        <p class="legal-p">All content on this website, including text, images, photography, and design elements, is the property of Scott & Michael / Arizto Real Estate and is protected by applicable intellectual property laws.</p>
-      </div>
-      <div class="legal-section">
-        <div class="legal-h2">6. Complaints</div>
-        <p class="legal-p">For complaints about real estate services, please contact the Real Estate Authority (REA) at www.rea.govt.nz. We are committed to resolving all client concerns promptly and professionally.</p>
-      </div>
+      <div class="legal-section"><div class="legal-h2">1. Agreement to Terms</div><p class="legal-p">By accessing and using this website and our real estate services, you accept and agree to be bound by these Terms and Conditions. If you do not agree to these terms, please do not use our services.</p></div>
+      <div class="legal-section"><div class="legal-h2">2. Real Estate Services</div><p class="legal-p">Scott & Michael are licensed salespersons under the Real Estate Agents Act 2008 (REAA 2008), operating under the Arizto Real Estate platform. All services are provided in accordance with New Zealand real estate law and the standards set by the Real Estate Authority (REA).</p></div>
+      <div class="legal-section"><div class="legal-h2">3. Property Information</div><p class="legal-p">Property details, pricing information, and related content on this website are provided for informational purposes only. While we endeavour to keep information accurate and up to date, we cannot guarantee the completeness or accuracy of all information at all times.</p></div>
+      <div class="legal-section"><div class="legal-h2">4. No Upfront Cost Service</div><p class="legal-p">Our no upfront cost service means you pay our commission only upon successful settlement of your property. Specific terms and commission rates are outlined in your individual listing agreement and may vary based on property type and agreed services.</p></div>
+      <div class="legal-section"><div class="legal-h2">5. Intellectual Property</div><p class="legal-p">All content on this website, including text, images, photography, and design elements, is the property of Scott & Michael / Arizto Real Estate and is protected by applicable intellectual property laws.</p></div>
+      <div class="legal-section"><div class="legal-h2">6. Complaints</div><p class="legal-p">For complaints about real estate services, please contact the Real Estate Authority (REA) at www.rea.govt.nz. We are committed to resolving all client concerns promptly and professionally.</p></div>
     </div>
   </div>
   <div id="footer-terms"></div>
 </div>
 
 <script>
+// ─── IMAGE POOLS (Unsplash — free, no auth, reliable) ───────────────────────
+const PROP_IMGS = [
+  'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=75&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=75&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&q=75&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=75&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1628744448840-55bdb2497bd4?w=800&q=75&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800&q=75&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=800&q=75&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1613977257592-4871e5fcd7c4?w=800&q=75&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=75&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800&q=75&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1449844908441-8829872d2607?w=800&q=75&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1505843513577-22bb7d21e455?w=800&q=75&auto=format&fit=crop',
+];
+
+const SOLD_IMGS = [
+  'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=800&q=75&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1613977257363-707ba9348227?w=800&q=75&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=800&q=75&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1592595896551-12b371d546d5?w=800&q=75&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=800&q=75&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&q=75&auto=format&fit=crop',
+];
+
+const INSIGHT_IMGS = [
+  'https://images.unsplash.com/photo-1504615755583-2916b52192a3?w=800&q=75&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1460472178825-e5240623afd5?w=800&q=75&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=75&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=800&q=75&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=75&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=75&auto=format&fit=crop',
+];
+
+const TEAM_IMGS = [
+  'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=75&auto=format&fit=crop&crop=face',
+  'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&q=75&auto=format&fit=crop&crop=face',
+  'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&q=75&auto=format&fit=crop&crop=face',
+  'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&q=75&auto=format&fit=crop&crop=face',
+  'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=75&auto=format&fit=crop&crop=face',
+  'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=75&auto=format&fit=crop&crop=face',
+  'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=75&auto=format&fit=crop&crop=face',
+  'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=400&q=75&auto=format&fit=crop&crop=face',
+  'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=75&auto=format&fit=crop&crop=face',
+  'https://images.unsplash.com/photo-1548372290-8d01b6c8e78c?w=400&q=75&auto=format&fit=crop&crop=face',
+  'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&q=75&auto=format&fit=crop&crop=face',
+  'https://images.unsplash.com/photo-1491349174775-aaaefdd81942?w=400&q=75&auto=format&fit=crop&crop=face',
+];
+
 // ─── DATA ───────────────────────────────────────────────────────────────────
 const PROPERTIES = [
-  {price:'$1,295,000',address:'42 Hibiscus Coast Highway, Whangaparaoa',beds:4,baths:2,garage:2,type:'house',badge:'For Sale',img:'🏡'},
-  {price:'$875,000',address:'17 Beach Road, Orewa',beds:3,baths:1,garage:1,type:'house',badge:'For Sale',img:'🏠'},
-  {price:'$2,100,000',address:'8 Crestview Drive, Red Beach',beds:5,baths:3,garage:3,type:'house',badge:'For Sale',img:'🏰'},
-  {price:'$650,000',address:'304/12 Takapuna Road, Takapuna',beds:2,baths:1,garage:1,type:'apartment',badge:'For Sale',img:'🏢'},
-  {price:'$1,750,000',address:'Lifestyle Block, Puhoi Valley',beds:4,baths:2,garage:2,type:'lifestyle',badge:'For Sale',img:'🌿'},
-  {price:'$1,050,000',address:'22 Anchor Bay Way, Manly',beds:3,baths:2,garage:2,type:'house',badge:'For Sale',img:'⚓'},
+  {price:'$1,295,000',address:'42 Hibiscus Coast Highway, Whangaparaoa',beds:4,baths:2,garage:2,type:'house',badge:'For Sale'},
+  {price:'$875,000',address:'17 Beach Road, Orewa',beds:3,baths:1,garage:1,type:'house',badge:'For Sale'},
+  {price:'$2,100,000',address:'8 Crestview Drive, Red Beach',beds:5,baths:3,garage:3,type:'house',badge:'For Sale'},
+  {price:'$650,000',address:'304/12 Takapuna Road, Takapuna',beds:2,baths:1,garage:1,type:'apartment',badge:'For Sale'},
+  {price:'$1,750,000',address:'Lifestyle Block, Puhoi Valley',beds:4,baths:2,garage:2,type:'lifestyle',badge:'For Sale'},
+  {price:'$1,050,000',address:'22 Anchor Bay Way, Manly',beds:3,baths:2,garage:2,type:'house',badge:'For Sale'},
 ];
 
 const SOLD = [
-  {price:'$1,180,000',address:'55 Sunset Ridge, Stanmore Bay',beds:4,baths:2,garage:2,badge:'Sold',img:'🌅',days:'12 days'},
-  {price:'$960,000',address:'3 Pohutukawa Lane, Gulf Harbour',beds:3,baths:1,garage:2,badge:'Sold',img:'🌺',days:'7 days'},
-  {price:'$2,350,000',address:'1 Ocean View Terrace, Red Beach',beds:5,baths:3,garage:3,badge:'Sold',img:'🌊',days:'14 days'},
-  {price:'$740,000',address:'8/45 Main Road, Orewa',beds:2,baths:1,garage:1,badge:'Sold',img:'🏙️',days:'21 days'},
-  {price:'$1,480,000',address:'27 Pine Ridge Drive, Dairy Flat',beds:4,baths:2,garage:3,badge:'Sold',img:'🌲',days:'9 days'},
-  {price:'$890,000',address:'14 Tidal View, Waiake',beds:3,baths:2,garage:1,badge:'Sold',img:'🌀',days:'18 days'},
+  {price:'$1,180,000',address:'55 Sunset Ridge, Stanmore Bay',beds:4,baths:2,garage:2,badge:'Sold',days:'12 days'},
+  {price:'$960,000',address:'3 Pohutukawa Lane, Gulf Harbour',beds:3,baths:1,garage:2,badge:'Sold',days:'7 days'},
+  {price:'$2,350,000',address:'1 Ocean View Terrace, Red Beach',beds:5,baths:3,garage:3,badge:'Sold',days:'14 days'},
+  {price:'$740,000',address:'8/45 Main Road, Orewa',beds:2,baths:1,garage:1,badge:'Sold',days:'21 days'},
+  {price:'$1,480,000',address:'27 Pine Ridge Drive, Dairy Flat',beds:4,baths:2,garage:3,badge:'Sold',days:'9 days'},
+  {price:'$890,000',address:'14 Tidal View, Waiake',beds:3,baths:2,garage:1,badge:'Sold',days:'18 days'},
 ];
 
 const TESTIMONIALS = [
@@ -1363,48 +1029,53 @@ const INSIGHTS = [
   {tag:'Market Update',title:'New Zealand Property Market: Mid-2025 Outlook',excerpt:'Interest rate reductions continue to re-energise buyer activity across the country. The Hibiscus Coast and North Shore remain among the most resilient markets, with days-on-market averaging well below the national figure.',date:'April 2025'},
   {tag:'Seller Guide',title:'How to Maximise Your Sale Price in Any Market',excerpt:'Pricing strategy, presentation quality, and marketing reach are the three pillars of a premium sale result. Here we break down exactly what Scott & Michael do differently to consistently exceed vendor expectations.',date:'March 2025'},
   {tag:'Area Report',title:'Hibiscus Coast: Why Buyers Are Moving North',excerpt:'Infrastructure investment, lifestyle appeal, and relative affordability are drawing an increasing wave of buyers to the Hibiscus Coast. Here is a detailed breakdown of what is driving this trend and what it means for local vendors.',date:'February 2025'},
-  {tag:'Investment',title:'Rental Yields & Capital Growth: Where to Buy in 2025',excerpt:'Our analysis of NZ\'s top-performing residential investment areas — including yield data, vacancy rates, and 5-year growth projections for the regions we operate in.',date:'January 2025'},
-  {tag:'First Home',title:'First Home Buyer\'s Complete Guide to New Zealand',excerpt:'Navigating KiwiSaver withdrawals, First Home Grant eligibility, and the competitive Auckland market can be overwhelming. This comprehensive guide walks you through every step.',date:'December 2024'},
-  {tag:'Luxury Market',title:'New Zealand\'s Luxury Property Segment in 2025',excerpt:'Properties above $2M are experiencing renewed international buyer interest as travel patterns normalise. We examine what this means for premium vendors and how to position your property for the global market.',date:'November 2024'},
+  {tag:'Investment',title:'Rental Yields & Capital Growth: Where to Buy in 2025',excerpt:"Our analysis of NZ's top-performing residential investment areas — including yield data, vacancy rates, and 5-year growth projections for the regions we operate in.",date:'January 2025'},
+  {tag:'First Home',title:"First Home Buyer's Complete Guide to New Zealand",excerpt:'Navigating KiwiSaver withdrawals, First Home Grant eligibility, and the competitive Auckland market can be overwhelming. This comprehensive guide walks you through every step.',date:'December 2024'},
+  {tag:'Luxury Market',title:"New Zealand's Luxury Property Segment in 2025",excerpt:'Properties above $2M are experiencing renewed international buyer interest as travel patterns normalise. We examine what this means for premium vendors and how to position your property for the global market.',date:'November 2024'},
 ];
 
 const TEAM = [
-  {name:'Scott Franks',area:'Hibiscus Coast & North Shore',init:'SF'},
-  {name:'Mike Bell',area:'Franklin',init:'MB'},
-  {name:'Raewyn Beazley',area:'Tauranga / Rotorua',init:'RB'},
-  {name:'Pip Wells',area:'Franklin',init:'PW'},
-  {name:'Vance Bibby',area:'Waihi / Katikati / Ōmokoroa',init:'VB'},
-  {name:'Mark Wyatt',area:'Papamoa / Mt Maunganui',init:'MW'},
-  {name:'Wayne & Veena Hemingway',area:'Rotorua',init:'WV'},
-  {name:'Kate Lamont',area:'Christchurch',init:'KL'},
-  {name:'Alan Wilson',area:'Wellington',init:'AW'},
-  {name:'Darren Harris',area:'Auckland / Hamilton / Waikato',init:'DH'},
-  {name:'Supreet Gill',area:'Central Auckland',init:'SG'},
-  {name:'Felicity Temple',area:'Whanganui',init:'FT'},
+  {name:'Scott Franks',area:'Hibiscus Coast & North Shore'},
+  {name:'Mike Bell',area:'Franklin'},
+  {name:'Raewyn Beazley',area:'Tauranga / Rotorua'},
+  {name:'Pip Wells',area:'Franklin'},
+  {name:'Vance Bibby',area:'Waihi / Katikati / Ōmokoroa'},
+  {name:'Mark Wyatt',area:'Papamoa / Mt Maunganui'},
+  {name:'Wayne & Veena Hemingway',area:'Rotorua'},
+  {name:'Kate Lamont',area:'Christchurch'},
+  {name:'Alan Wilson',area:'Wellington'},
+  {name:'Darren Harris',area:'Auckland / Hamilton / Waikato'},
+  {name:'Supreet Gill',area:'Central Auckland'},
+  {name:'Felicity Temple',area:'Whanganui'},
 ];
 
-// ─── RENDER FUNCTIONS ────────────────────────────────────────────────────────
-function propCard(p, i) {
-  return `<div class="prop-card reveal" style="transition-delay:${i*80}ms">
+// ─── RENDER HELPERS ──────────────────────────────────────────────────────────
+function propCard(p, i, imgArr) {
+  const img = imgArr[i % imgArr.length];
+  const soldBadge = p.badge === 'Sold';
+  return `<div class="prop-card reveal" style="transition-delay:${(i%3)*100}ms">
     <div class="prop-img">
-      <div class="prop-img-inner"><div class="prop-img-placeholder">${p.img}</div></div>
-      <div class="prop-badge${p.badge==='Sold'?' sold':''}">${p.badge}</div>
+      <img src="${img}" alt="${p.address}" loading="lazy">
+      <div class="prop-img-overlay"></div>
+      <div class="prop-badge${soldBadge?' sold':''}">${p.badge}</div>
     </div>
     <div class="prop-body">
       <div class="prop-price">${p.price}</div>
       <div class="prop-address">${p.address}</div>
       <div class="prop-details">
-        <div class="prop-detail">🛏 ${p.beds} Beds</div>
-        <div class="prop-detail">🚿 ${p.baths} Baths</div>
-        <div class="prop-detail">🚗 ${p.garage} Garage</div>
-        ${p.days?`<div class="prop-detail">⚡ ${p.days}</div>`:''}
+        <div class="prop-detail">🛏 ${p.beds} Bed</div>
+        <div class="prop-detail">🚿 ${p.baths} Bath</div>
+        <div class="prop-detail">🚗 ${p.garage}</div>
+        ${p.days ? `<div class="prop-detail">⚡ ${p.days}</div>` : ''}
       </div>
     </div>
   </div>`;
 }
 
-function insightCard(ins, i) {
-  return `<div class="insight-card reveal" style="transition-delay:${i*80}ms">
+function insightCard(ins, i, showImg) {
+  const img = INSIGHT_IMGS[i % INSIGHT_IMGS.length];
+  return `<div class="insight-card reveal" style="transition-delay:${(i%2)*100}ms">
+    ${showImg ? `<div class="insight-card-img"><img src="${img}" alt="${ins.title}" loading="lazy"></div>` : ''}
     <div class="insight-tag">${ins.tag}</div>
     <div class="insight-title">${ins.title}</div>
     <div class="insight-excerpt">${ins.excerpt}</div>
@@ -1416,12 +1087,12 @@ function footerHTML() {
   return `<footer>
     <div class="footer-inner">
       <div class="footer-top">
-        <div class="footer-brand">
+        <div>
           <span class="footer-logo">Scott & Michael</span>
           <div class="footer-tagline">New Zealand's most trusted real estate professionals. No upfront costs — no sale, no fee. Licensed under Arizto Real Estate, REAA 2008.</div>
           <div class="social-links" style="margin-top:1.5rem">
-            <a class="social-link" href="https://facebook.com/AriztoNZ" target="_blank">f</a>
-            <a class="social-link" href="https://instagram.com/ariztonz" target="_blank">ig</a>
+            <a class="social-link" href="https://facebook.com/AriztoNZ" target="_blank" rel="noopener">f</a>
+            <a class="social-link" href="https://instagram.com/ariztonz" target="_blank" rel="noopener">ig</a>
           </div>
         </div>
         <div>
@@ -1450,7 +1121,7 @@ function footerHTML() {
             <li><a href="tel:0800540550">0800 540 550</a></li>
             <li><a href="mailto:scott@arizto.co.nz">scott@arizto.co.nz</a></li>
             <li><a href="mailto:mike.b@arizto.co.nz">mike.b@arizto.co.nz</a></li>
-            <li><a href="https://www.arizto.co.nz" target="_blank">arizto.co.nz</a></li>
+            <li><a href="https://www.arizto.co.nz" target="_blank" rel="noopener">arizto.co.nz</a></li>
           </ul>
         </div>
       </div>
@@ -1467,100 +1138,107 @@ function footerHTML() {
 
 // ─── INIT ────────────────────────────────────────────────────────────────────
 function init() {
-  // Featured (home)
+  // Featured grid (home) — first 3
   const fg = document.getElementById('featuredGrid');
-  if(fg) fg.innerHTML = PROPERTIES.slice(0,3).map(propCard).join('');
-  // All props
+  if (fg) fg.innerHTML = PROPERTIES.slice(0,3).map((p,i) => propCard(p, i, PROP_IMGS)).join('');
+
+  // All properties
   const ag = document.getElementById('allPropsGrid');
-  if(ag) ag.innerHTML = PROPERTIES.map(propCard).join('');
+  if (ag) ag.innerHTML = PROPERTIES.map((p,i) => propCard(p, i, PROP_IMGS)).join('');
+
   // Sold
   const sg = document.getElementById('soldGrid');
-  if(sg) sg.innerHTML = SOLD.map(propCard).join('');
-  // Testimonials carousel (home)
+  if (sg) sg.innerHTML = SOLD.map((p,i) => propCard(p, i, SOLD_IMGS)).join('');
+
+  // Testimonials carousel
   const tt = document.getElementById('testiTrack');
-  if(tt) tt.innerHTML = TESTIMONIALS.map(t=>`
+  if (tt) tt.innerHTML = TESTIMONIALS.map(t => `
     <div class="testi-card">
       <div class="testi-stars">${t.stars}</div>
       <div class="testi-text">"${t.text}"</div>
       <div class="testi-author">${t.author}</div>
       <div class="testi-source">${t.source}</div>
     </div>`).join('');
+
   // Testimonials page
   const tp = document.getElementById('testiPage');
-  if(tp) tp.innerHTML = TESTIMONIALS.map((t,i)=>`
-    <div class="testi-full-card reveal" style="transition-delay:${i*80}ms">
+  if (tp) tp.innerHTML = TESTIMONIALS.map((t,i) => `
+    <div class="testi-full-card reveal" style="transition-delay:${(i%2)*100}ms">
       <div class="testi-full-stars">${t.stars}</div>
       <div class="testi-full-text">"${t.text}"</div>
       <div class="testi-full-author">${t.author}</div>
       <div class="testi-full-source">${t.source}</div>
     </div>`).join('');
-  // Insights home
+
+  // Insights home (4, with images)
   const ih = document.getElementById('insightsHome');
-  if(ih) ih.innerHTML = INSIGHTS.slice(0,4).map(insightCard).join('');
-  // Insights page
+  if (ih) ih.innerHTML = INSIGHTS.slice(0,4).map((ins,i) => insightCard(ins, i, true)).join('');
+
+  // Insights page (all, with images)
   const ip = document.getElementById('insightsPage');
-  if(ip) ip.innerHTML = INSIGHTS.map(insightCard).join('');
+  if (ip) ip.innerHTML = INSIGHTS.map((ins,i) => insightCard(ins, i, true)).join('');
+
   // Team
   const tg = document.getElementById('teamGrid');
-  if(tg) tg.innerHTML = TEAM.map((m,i)=>`
-    <div class="team-card reveal" style="transition-delay:${i*60}ms">
-      <div class="team-card-avatar">${m.init}</div>
+  if (tg) tg.innerHTML = TEAM.map((m,i) => `
+    <div class="team-card reveal" style="transition-delay:${(i%4)*80}ms">
+      <div class="team-card-avatar">
+        <img src="${TEAM_IMGS[i % TEAM_IMGS.length]}" alt="${m.name}" loading="lazy">
+      </div>
       <div class="team-card-name">${m.name}</div>
       <div class="team-card-role">Licensed Salesperson</div>
       <div class="team-card-area">${m.area}</div>
     </div>`).join('');
-  // Inject footers
-  document.querySelectorAll('[id^="footer-"]').forEach(el=>{el.innerHTML=footerHTML()});
+
+  // Footers
+  document.querySelectorAll('[id^="footer-"]').forEach(el => { el.innerHTML = footerHTML(); });
 }
 
 // ─── NAV SCROLL ──────────────────────────────────────────────────────────────
-window.addEventListener('scroll',()=>{
-  const nb=document.getElementById('navbar');
-  if(window.scrollY>60){
+window.addEventListener('scroll', () => {
+  const nb = document.getElementById('navbar');
+  const isHome = document.getElementById('page-home').classList.contains('active');
+  if (window.scrollY > 60) {
+    nb.classList.add('scrolled');
+    nb.querySelector('.nav-logo').classList.add('dark');
+    nb.querySelector('.nav-links').classList.add('dark');
+    nb.querySelector('.hamburger').classList.add('dark');
+  } else if (isHome) {
+    nb.classList.remove('scrolled');
+    nb.querySelector('.nav-logo').classList.remove('dark');
+    nb.querySelector('.nav-links').classList.remove('dark');
+    nb.querySelector('.hamburger').classList.remove('dark');
+  }
+});
+
+// ─── NAVIGATION ──────────────────────────────────────────────────────────────
+function navigate(page) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const target = document.getElementById('page-' + page);
+  if (!target) return;
+  target.classList.add('active');
+  target.classList.remove('fade-in');
+  void target.offsetWidth;
+  target.classList.add('fade-in');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  const nb = document.getElementById('navbar');
+  if (page !== 'home') {
     nb.classList.add('scrolled');
     nb.querySelector('.nav-logo').classList.add('dark');
     nb.querySelector('.nav-links').classList.add('dark');
     nb.querySelector('.hamburger').classList.add('dark');
   } else {
-    const home=document.getElementById('page-home');
-    if(home.classList.contains('active')){
-      nb.classList.remove('scrolled');
-      nb.querySelector('.nav-logo').classList.remove('dark');
-      nb.querySelector('.nav-links').classList.remove('dark');
-      nb.querySelector('.hamburger').classList.remove('dark');
-    }
+    nb.classList.remove('scrolled');
+    nb.querySelector('.nav-logo').classList.remove('dark');
+    nb.querySelector('.nav-links').classList.remove('dark');
+    nb.querySelector('.hamburger').classList.remove('dark');
   }
-});
-
-// ─── NAVIGATION ──────────────────────────────────────────────────────────────
-let currentPage = 'home';
-function navigate(page) {
-  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  const target = document.getElementById('page-'+page);
-  if(!target) return;
-  target.classList.add('active');
-  target.classList.remove('fade-in');
-  void target.offsetWidth;
-  target.classList.add('fade-in');
-  currentPage = page;
-  window.scrollTo({top:0,behavior:'smooth'});
-  // Navbar colour
-  const nb=document.getElementById('navbar');
-  const isHome = page==='home';
-  if(!isHome){
-    nb.classList.add('scrolled');
-    nb.querySelector('.nav-logo').classList.add('dark');
-    nb.querySelector('.nav-links').classList.add('dark');
-    nb.querySelector('.hamburger').classList.add('dark');
-  }
-  // Scroll reveal on new page
-  setTimeout(()=>setupScrollReveal(), 100);
-  // Active link
-  document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
+  setTimeout(setupScrollReveal, 120);
 }
 
 // ─── MOBILE MENU ─────────────────────────────────────────────────────────────
-function toggleMobile(){
+function toggleMobile() {
   document.getElementById('mobile-menu').classList.toggle('open');
 }
 
@@ -1568,50 +1246,48 @@ function toggleMobile(){
 let testiIdx = 0;
 function moveTesti(dir) {
   const track = document.getElementById('testiTrack');
-  if(!track) return;
-  const max = TESTIMONIALS.length - 2;
-  testiIdx = Math.max(0, Math.min(max, testiIdx+dir));
-  const cardW = track.children[0]?.offsetWidth || 0;
+  if (!track || !track.children.length) return;
+  const max = TESTIMONIALS.length - 1;
+  testiIdx = Math.max(0, Math.min(max, testiIdx + dir));
+  const cardW = track.children[0].offsetWidth;
   const gap = 32;
-  track.style.transform = `translateX(-${testiIdx*(cardW+gap)}px)`;
+  track.style.transform = `translateX(-${testiIdx * (cardW + gap)}px)`;
 }
 
 // ─── PROPERTY FILTER ─────────────────────────────────────────────────────────
 function filterProps(btn, type) {
-  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   const grid = document.getElementById('allPropsGrid');
-  if(!grid) return;
-  const filtered = type==='all'?PROPERTIES:PROPERTIES.filter(p=>p.type===type);
-  grid.innerHTML = filtered.map(propCard).join('');
-  setupScrollReveal();
+  if (!grid) return;
+  const filtered = type === 'all' ? PROPERTIES : PROPERTIES.filter(p => p.type === type);
+  grid.innerHTML = filtered.map((p,i) => propCard(p, i, PROP_IMGS)).join('');
+  setTimeout(setupScrollReveal, 50);
 }
 
 // ─── SCROLL REVEAL ───────────────────────────────────────────────────────────
-const revealObs = new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      e.target.classList.add('visible');
-    }
+const revealObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); }
   });
-},{threshold:0.1});
+}, { threshold: 0.08 });
 
-function setupScrollReveal(){
-  document.querySelectorAll('.reveal,.stat-item,.prop-card,.service-card,.award-item,.award-full-card').forEach(el=>{
+function setupScrollReveal() {
+  document.querySelectorAll('.reveal, .stat-item, .prop-card, .service-card, .award-item, .award-full-card, .team-card').forEach(el => {
     revealObs.observe(el);
   });
 }
 
 // ─── LOADER ──────────────────────────────────────────────────────────────────
-window.addEventListener('DOMContentLoaded',()=>{
+window.addEventListener('DOMContentLoaded', () => {
   init();
   const fill = document.getElementById('loaderFill');
-  if(fill) {
-    setTimeout(()=>{ fill.style.width='100%'; },100);
-    setTimeout(()=>{
+  if (fill) {
+    setTimeout(() => { fill.style.width = '100%'; }, 80);
+    setTimeout(() => {
       document.getElementById('loader').classList.add('hidden');
       setupScrollReveal();
-    },1800);
+    }, 1900);
   }
 });
 </script>
